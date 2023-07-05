@@ -1,5 +1,6 @@
 package com.project.model;
 
+import com.project.enumeration.Category;
 import com.project.security.entity.AuthUser;
 
 import jakarta.persistence.Column;
@@ -29,7 +30,7 @@ public class Game {
 	
 	private String description;
 	
-	private String category;
+	private Category category;
 	
 	@Column(name = "rental_price")
 	private double rentalPrice;

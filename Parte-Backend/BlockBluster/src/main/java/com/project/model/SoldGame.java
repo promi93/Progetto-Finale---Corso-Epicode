@@ -1,5 +1,7 @@
 package com.project.model;
 
+import java.time.LocalDate;
+
 import com.project.enumeration.Category;
 import com.project.security.entity.AuthUser;
 
@@ -19,31 +21,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "custom_games")
-public class CustomGame {
+@Table(name = "sold_games")
+public class SoldGame {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	private String title;
-	
-	private String description;
-	
-	private Category category;
-	
-	@Column(name = "rental_price")
-	private double rentalPrice;
-	
-	@Column(name = "game_price")
-	private double gamePrice;
-	
-	private boolean isAvailable;
-	
-	@ManyToOne
-	@JoinColumn(name = "owner_id")
-	private AuthUser owner;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "game_id", nullable = false)
+    private Game game;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private AuthUser user;
+
+    @Column(name = "data_acquisto", nullable = false)
+    private LocalDate saleDate;
 	
 }
-
-// CustomGame: rappresenta il gioco da tavolo creato e caricato dall' utente con le stesse proprietà della classe Game
