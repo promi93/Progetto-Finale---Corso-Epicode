@@ -30,12 +30,16 @@ public class AuthRunner implements ApplicationRunner {
 	private Set<Role> moderatorRole;
 	private Set<Role> userRole;
 	
+	boolean setRol;
+	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("Run...");
 		// Metodo da lanciare solo la prima volta
 		// Serve per salvare i ruoli nel DB
-		setRoleDefault();
+		if(roleRepository.findAll().size() == 0) {
+			setRoleDefault();
+		}
 //		saveUser();
 		//getAllRole();
 		
