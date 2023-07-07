@@ -38,8 +38,9 @@ function NavBar() {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              id="btn-search"
             />
-            <Button variant="outline-success">Search</Button>
+            <Button className="btn">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
