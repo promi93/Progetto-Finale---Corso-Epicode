@@ -5,6 +5,8 @@ import com.project.security.entity.AuthUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,6 +36,7 @@ public class Game {
 	
 	private String description;
 	
+	@Enumerated(EnumType.STRING)
 	private Category category;
 	
 	@Column(name = "rental_price")
@@ -44,9 +47,6 @@ public class Game {
 	
 	private boolean isAvailable;
 	
-	@ManyToOne
-	@JoinColumn(name = "owner_id")
-	private AuthUser owner;
 	
 }
 

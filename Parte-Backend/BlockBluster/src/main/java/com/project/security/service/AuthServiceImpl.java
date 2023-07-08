@@ -99,9 +99,8 @@ public class AuthServiceImpl implements AuthService {
         }
         
         user.setRoles(roles);
-        System.out.println(user);
         userRepository.save(user);
-
+        System.out.println(user);
         return "User registered successfully!.";
     }
     
