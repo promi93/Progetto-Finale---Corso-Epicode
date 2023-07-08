@@ -40,7 +40,9 @@ function NavBar() {
               aria-label="Search"
               id="btn-search"
             />
-            <Button className="btn">Search</Button>
+            <Button className="btn" variant="trasparent">
+              Search
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>
