@@ -2,8 +2,6 @@ package com.project.entity;
 
 import java.time.LocalDate;
 
-import com.project.security.entity.AuthUser;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

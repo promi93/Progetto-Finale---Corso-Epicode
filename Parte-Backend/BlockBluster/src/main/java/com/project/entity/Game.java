@@ -1,7 +1,6 @@
 package com.project.entity;
 
 import com.project.enumeration.Category;
-import com.project.security.entity.AuthUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,6 +33,7 @@ public class Game {
 	
 	private String title;
 	
+	@Transient
 	private String description;
 	
 	@Enumerated(EnumType.STRING)
@@ -45,6 +45,7 @@ public class Game {
 	@Column(name = "game_price")
 	private double gamePrice;
 	
+	@Column(name = "availability")
 	private boolean isAvailable;
 	
 	

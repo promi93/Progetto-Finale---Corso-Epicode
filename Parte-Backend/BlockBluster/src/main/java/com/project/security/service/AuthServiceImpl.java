@@ -13,9 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.project.entity.AuthUser;
+import com.project.entity.Role;
 import com.project.enumeration.ERole;
-import com.project.security.entity.AuthUser;
-import com.project.security.entity.Role;
 import com.project.security.exception.MyAPIException;
 import com.project.security.payload.LoginDto;
 import com.project.security.payload.RegisterDto;

@@ -1,10 +1,11 @@
 package com.project.entity;
 
 import com.project.enumeration.Category;
-import com.project.security.entity.AuthUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,8 +33,10 @@ public class CustomGame {
 	
 	private String title;
 	
+	@Transient
 	private String description;
 	
+	@Enumerated(EnumType.STRING)
 	private Category category;
 	
 	@Column(name = "rental_price")
@@ -42,6 +45,7 @@ public class CustomGame {
 	@Column(name = "game_price")
 	private double gamePrice;
 	
+	@Column(name = "availability")
 	private boolean isAvailable;
 	
 	@ManyToOne

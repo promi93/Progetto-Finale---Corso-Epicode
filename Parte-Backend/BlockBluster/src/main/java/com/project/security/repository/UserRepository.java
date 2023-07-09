@@ -2,7 +2,7 @@ package com.project.security.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.project.security.entity.AuthUser;
+import com.project.entity.AuthUser;
 
 import java.util.List;
 import java.util.Optional;

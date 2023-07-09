@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.security.entity.AuthUser;
+import com.project.entity.AuthUser;
 import com.project.security.service.AuthServiceImpl;
 
 

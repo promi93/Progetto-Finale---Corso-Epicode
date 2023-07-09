@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.entity.Game;
-import com.project.enumeration.Category;
 import com.project.repository.GameRepository;
 
 import jakarta.persistence.EntityExistsException;
@@ -22,24 +21,36 @@ public class GameService {
 	}
 	
 	public Game getGameById(Long id) {
-		if(!gameRepository.existsById(id)) {
-			 throw new EntityExistsException("Gioco ID non esiste!");
-		}
-		return gameRepository.findById(id).get();
+	    return gameRepository.findById(id).orElse(null);
 	}
-	
+
 	public Game createGame(Game game) {
-		return gameRepository.save(game);
+	    if (game.getId() != null && gameRepository.existsById(game.getId())) {
+	        throw new EntityExistsException("Il gioco con ID " + game.getId() + " già esiste.");
+	    }
+	    if (gameRepository.findByTitle(game.getTitle()).isPresent()) {
+	        throw new EntityExistsException("Il gioco con nome " + game.getTitle() + " già esiste.");
+	    }
+	    return gameRepository.save(game);
 	}
-	
+
 	public Game updateGame(Long id, Game game) {
-		return gameRepository.save(game);
+	    if (!gameRepository.existsById(id)) {
+	        throw new EntityExistsException("Il gioco con ID " + id + " non esiste.");
+	    }
+	    if (gameRepository.existsByTitleAndIdNot(game.getTitle(), id)) {
+	        throw new EntityExistsException("Il gioco con nome " + game.getTitle() + " già esiste.");
+	    }
+	    game.setId(id);
+	    return gameRepository.save(game);
 	}
-	
+
 	public String removeGame(Long id) {
-		gameRepository.deleteById(id);
-		return "Gioco eliminato con successo!";
+	    if (!gameRepository.existsById(id)) {
+	        throw new EntityExistsException("Il gioco con ID " + id + " non esiste.");
+	    }
+	    gameRepository.deleteById(id);
+	    return "Gioco eliminato con successo!";
 	}
-	
 
 }

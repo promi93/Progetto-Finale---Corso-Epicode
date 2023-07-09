@@ -11,8 +11,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.project.entity.Role;
 import com.project.enumeration.ERole;
-import com.project.security.entity.Role;
 import com.project.security.repository.RoleRepository;
 import com.project.security.repository.UserRepository;
 import com.project.security.service.AuthService;
