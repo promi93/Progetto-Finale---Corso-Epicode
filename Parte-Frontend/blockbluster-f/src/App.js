@@ -9,7 +9,8 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route></Route>
+        <Route />
+        <Route />
       </Routes>
     </BrowserRouter>
   );

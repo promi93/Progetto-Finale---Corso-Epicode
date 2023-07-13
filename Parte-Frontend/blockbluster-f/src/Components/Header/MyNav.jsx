@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import { BsSearch } from "react-icons/bs";
 
 function NavBar() {
   return (
@@ -13,24 +13,13 @@ function NavBar() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className="me-auto my-2 my-lg-0"
+            className="me-auto my-2 my-lg-0 ms-5 ps-5"
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
             <Nav.Link href="#action1">Home</Nav.Link>
             <Nav.Link href="#action2">Contatti</Nav.Link>
             <Nav.Link href="#action3">About us</Nav.Link>
-            <Nav.Link href="#action1">Info</Nav.Link>
-            <NavDropdown title="Servizi" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
-            </NavDropdown>
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -41,7 +30,7 @@ function NavBar() {
               id="btn-search"
             />
             <Button className="btn" variant="trasparent">
-              Search
+              <BsSearch />
             </Button>
           </Form>
         </Navbar.Collapse>
