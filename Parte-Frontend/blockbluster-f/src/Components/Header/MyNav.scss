@@ -12,10 +12,6 @@
   display: none;
 }
 
-::-moz-placeholder {
-  color: rgba(128, 128, 128, 0.409) !important;
-}
-
 ::placeholder {
   color: rgba(128, 128, 128, 0.409) !important;
 }
@@ -23,5 +19,5 @@
 #outlineBtn {
   border-radius: 20px;
   box-shadow: none !important;
-  border: transparent !important;
-}/*# sourceMappingURL=MyNav.css.map */
+  border: transparent !important ;
+}
