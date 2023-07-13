@@ -47,7 +47,7 @@ function NavBar() {
               <BsSearch />
             </Button>
           </Form>
-          <FaUser className="fa" />
+          <FaUser className="user" />
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -7,6 +7,7 @@ public enum Category {
 	STRATEGY,
 	CARD,
 	ROLE_PLAY,
-	CLASSIC
+	CLASSIC,
+	WORD
 
 }
