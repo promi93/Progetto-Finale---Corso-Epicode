@@ -81,3 +81,4 @@
 15:03:01.921 [http-nio-8080-exec-9] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.project.security.exception.MyAPIException: Username is already exists!.]
 15:45:44.075 [http-nio-8080-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.project.security.exception.MyAPIException: Username is already exists!.]
 15:57:49.296 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.project.security.exception.MyAPIException: Username is already exists!.]
+16:04:20.024 [http-nio-8080-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.project.security.exception.MyAPIException: Username is already exists!.]

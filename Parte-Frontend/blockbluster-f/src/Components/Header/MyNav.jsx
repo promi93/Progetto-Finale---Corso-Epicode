@@ -11,7 +11,6 @@ import { Modal } from "react-bootstrap";
 
 function MyNav() {
   const [showSearch, setShowSearch] = useState(false);
-  const [showRegisterForm, setShowRegisterForm] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [registeredUser, setRegisteredUser] = useState(null);
 
@@ -28,24 +27,9 @@ function MyNav() {
   };
 
   const handleRegister = (userData) => {
-    fetch("http://localhost:8080/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log("Registrazione avvenuta con successo");
-          setRegisteredUser(userData);
-        } else {
-          throw new Error("Errore durante la registrazione");
-        }
-      })
-      .catch((error) => {
-        console.error("Errore durante la registrazione:", error.message);
-      });
+    // Puoi eseguire qui eventuali operazioni dopo la registrazione
+    console.log("Registrazione avvenuta con successo");
+    setRegisteredUser(userData);
   };
 
   return (
@@ -90,7 +74,6 @@ function MyNav() {
               <RegisterForm onRegister={handleRegister} />
             </Modal.Body>
           </Modal>
-          {showRegisterForm && <RegisterForm />}
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const RegisterForm = ({ onRegister }) => {
+const RegisterForm = () => {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [username, setUsername] = useState("");
@@ -26,7 +26,28 @@ const RegisterForm = ({ onRegister }) => {
       alfaCode,
       roles: [],
     };
-    onRegister(userData);
+
+    handleRegister(userData);
+  };
+
+  const handleRegister = (userData) => {
+    fetch("http://localhost:8080/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Registrazione avvenuta con successo");
+        } else {
+          throw new Error("Errore durante la registrazione");
+        }
+      })
+      .catch((error) => {
+        console.error("Errore durante la registrazione:", error.message);
+      });
   };
 
   return (
