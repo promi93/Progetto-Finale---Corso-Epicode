@@ -30,24 +30,27 @@ const RegisterForm = () => {
     handleRegister(userData);
   };
 
-  const handleRegister = (userData) => {
-    fetch("http://localhost:8080/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log("Registrazione avvenuta con successo");
-        } else {
-          throw new Error("Errore durante la registrazione");
-        }
-      })
-      .catch((error) => {
-        console.error("Errore durante la registrazione:", error.message);
+  const handleRegister = async (userData) => {
+    try {
+      const response = await fetch("http://localhost:8080/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
       });
+
+      if (response.ok) {
+        alert("Registrazione avvenuta con successo");
+      } else if (response.status === 400) {
+        throw new Error("L'utente è già registrato");
+      } else {
+        throw new Error("Errore durante la registrazione");
+      }
+    } catch (error) {
+      console.error("Errore durante la registrazione:", error.message);
+      alert(error.message);
+    }
   };
 
   return (
@@ -59,6 +62,7 @@ const RegisterForm = () => {
           placeholder="Enter name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
       </Form.Group>
 
@@ -69,6 +73,7 @@ const RegisterForm = () => {
           placeholder="Enter lastname"
           value={lastname}
           onChange={(e) => setLastname(e.target.value)}
+          required
         />
       </Form.Group>
 
@@ -79,6 +84,7 @@ const RegisterForm = () => {
           placeholder="Enter username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
       </Form.Group>
 
@@ -89,6 +95,7 @@ const RegisterForm = () => {
           placeholder="Enter email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
@@ -102,6 +109,7 @@ const RegisterForm = () => {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
       </Form.Group>
 
@@ -112,6 +120,7 @@ const RegisterForm = () => {
           placeholder="Enter credit card number"
           value={creditCard}
           onChange={(e) => setCreditCard(e.target.value)}
+          required
         />
       </Form.Group>
 
@@ -122,6 +131,7 @@ const RegisterForm = () => {
           placeholder="Enter secret code"
           value={secretCode}
           onChange={(e) => setSecretCode(e.target.value)}
+          required
         />
       </Form.Group>
 
@@ -132,10 +142,11 @@ const RegisterForm = () => {
           placeholder="Enter alfa code"
           value={alfaCode}
           onChange={(e) => setAlfaCode(e.target.value)}
+          required
         />
       </Form.Group>
 
-      <Button variant="primary" onClick={handleSubmit}>
+      <Button variant="primary" type="submit">
         Salva
       </Button>
     </Form>
