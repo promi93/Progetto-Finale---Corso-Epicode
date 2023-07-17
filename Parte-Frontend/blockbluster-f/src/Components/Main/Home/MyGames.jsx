@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-function GamePage() {
+function MyGames() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
@@ -26,14 +26,11 @@ function GamePage() {
   }, []);
 
   return (
-    <div className="game-list d-flex flex-wrap justify-content-center mt-5">
+    <div className="d-flex flex-wrap justify-content-center mt-5">
       {games.map((game) => (
         <Card key={game.id} style={{ width: "18rem", margin: "10px" }}>
+          <Card.Img src={game.image} />
           <Card.Body>
-            <Card.Img
-              src={game.image}
-              style={{ width: "100px", height: "100px" }}
-            />
             <Card.Title>{game.title}</Card.Title>
             <Card.Text>
               Category: {game.category}
@@ -52,4 +49,4 @@ function GamePage() {
   );
 }
 
-export default GamePage;
+export default MyGames;

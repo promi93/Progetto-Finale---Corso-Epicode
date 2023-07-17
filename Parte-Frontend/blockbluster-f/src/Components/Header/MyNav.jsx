@@ -6,12 +6,46 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { BsSearch } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
+import RegisterForm from "./RegisterForm";
+import { Modal } from "react-bootstrap";
 
-function NavBar() {
+function MyNav() {
   const [showSearch, setShowSearch] = useState(false);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [registeredUser, setRegisteredUser] = useState(null);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const handleSearchToggle = () => {
     setShowSearch(!showSearch);
+  };
+
+  const handleRegister = (userData) => {
+    fetch("http://localhost:8080/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Registrazione avvenuta con successo");
+          setRegisteredUser(userData);
+        } else {
+          throw new Error("Errore durante la registrazione");
+        }
+      })
+      .catch((error) => {
+        console.error("Errore durante la registrazione:", error.message);
+      });
   };
 
   return (
@@ -47,11 +81,20 @@ function NavBar() {
               <BsSearch />
             </Button>
           </Form>
-          <FaUser className="user" />
+          <FaUser className="user" onClick={openModal} />
+          <Modal show={showModal} onHide={closeModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>Registration</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <RegisterForm onRegister={handleRegister} />
+            </Modal.Body>
+          </Modal>
+          {showRegisterForm && <RegisterForm />}
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
 
-export default NavBar;
+export default MyNav;
