@@ -13,6 +13,11 @@
   font-size: small;
 }
 
+.t2 > span::after {
+  content: attr(data-text);
+  color: red;
+}
+
 .card {
   width: 20rem;
   margin: 20px;
