@@ -1,18 +1,15 @@
+// MyNav.js
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import { Navbar, Container, Nav, Form, Button, Modal } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
+import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
-import { Modal } from "react-bootstrap";
 
-function MyNav() {
+const MyNav = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [registeredUser, setRegisteredUser] = useState(null);
+  const [registerModal, setRegisterModal] = useState(false);
 
   const openModal = () => {
     setShowModal(true);
@@ -22,20 +19,27 @@ function MyNav() {
     setShowModal(false);
   };
 
+  const openRegisterModal = () => {
+    setRegisterModal(true);
+  };
+
+  const closeRegisterModal = () => {
+    setRegisterModal(false);
+  };
+
   const handleSearchToggle = () => {
     setShowSearch(!showSearch);
   };
 
-  const handleRegister = (userData) => {
-    // Puoi eseguire qui eventuali operazioni dopo la registrazione
-    console.log("Registrazione avvenuta con successo");
-    setRegisteredUser(userData);
+  const handleRegister = () => {
+    openRegisterModal();
+    closeModal();
   };
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary bg-nav shadow">
       <Container fluid>
-        <Navbar.Brand href="#">BlockBluster</Navbar.Brand>
+        <Navbar.Brand href="/">BlockBluster</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll" className="me-4">
           <Nav
@@ -43,9 +47,9 @@ function MyNav() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Contatti</Nav.Link>
-            <Nav.Link href="#action3">About us</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/contacts">Contatti</Nav.Link>
+            <Nav.Link href="#action3">Su di noi</Nav.Link>
           </Nav>
           <Form className="d-flex">
             {showSearch && (
@@ -68,16 +72,25 @@ function MyNav() {
           <FaUser className="user" onClick={openModal} />
           <Modal show={showModal} onHide={closeModal}>
             <Modal.Header closeButton>
+              <Modal.Title>Login</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <LoginForm onRegister={handleRegister} />
+            </Modal.Body>
+          </Modal>
+
+          <Modal show={registerModal} onHide={closeRegisterModal}>
+            <Modal.Header closeButton>
               <Modal.Title>Registration</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <RegisterForm onRegister={handleRegister} />
+              <RegisterForm />
             </Modal.Body>
           </Modal>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
+};
 
 export default MyNav;
