@@ -1,1 +1,64 @@
-/*# sourceMappingURL=MyGames.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Autour+One&display=swap");
+.t1 {
+  font-family: "Tilt Warp", cursive;
+  color: rgb(255, 111, 0);
+  font-weight: bolder;
+  font-size: 40px;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.242);
+}
+
+.t2 {
+  font-family: "Autour One", cursive;
+  font-size: small;
+}
+
+.card {
+  width: 20rem;
+  margin: 20px;
+  border: none;
+}
+
+#card2 {
+  width: 50%;
+  padding: 3em;
+}
+
+.card-link {
+  text-decoration-style: none;
+}
+
+.category,
+.rental-price,
+.game-price,
+.availability {
+  display: block;
+}
+
+.category {
+  font-weight: bold;
+}
+
+.rental-price,
+.game-price,
+.availability {
+  margin-top: 5px;
+}
+
+.nolo-btn {
+  color: rgb(255, 255, 255);
+  text-shadow: 3px 3px 4px black;
+  border-radius: 20px;
+  font-size: 15px;
+  box-shadow: 1px 1px 6px rgb(0, 0, 0);
+  background-color: rgba(255, 166, 0, 0.748);
+}
+
+.nolo-btn:hover {
+  color: rgba(255, 166, 0, 0.748);
+  font-size: 18px;
+  text-shadow: none;
+  box-shadow: 1px 1px 6px rgba(255, 166, 0, 0.748);
+  background-color: transparent;
+  transition: ease-in-out 0.6s;
+}/*# sourceMappingURL=MyGames.css.map */

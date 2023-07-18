@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
@@ -25,23 +26,34 @@ function MyGames() {
       );
   }, []);
 
+  if (games.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="d-flex flex-wrap justify-content-center mt-5">
       {games.map((game) => (
-        <Card key={game.id} style={{ width: "18rem", margin: "10px" }}>
-          <Card.Img src={game.image} />
+        <Card className="card">
+          <Link key={game.id} to={`/games/${game.id}`} className="card-link">
+            <Card.Img src={game.image} style={{ height: "200px" }} />
+          </Link>
           <Card.Body>
-            <Card.Title>{game.title}</Card.Title>
-            <Card.Text>
-              Category: {game.category}
-              <br />
-              Rental Price: {game.rentalPrice}
-              <br />
-              Game Price: {game.gamePrice}
-              <br />
-              Available: {game.isAvailable ? "Yes" : "No"}
+            <Card.Title className="t1">{game.title}</Card.Title>
+            <Card.Text className="t2">
+              <span className="category">Categoria: {game.category}</span>
+              <span className="rental-price">
+                Prezzo noleggio: {game.rentalPrice}€
+              </span>
+              <span className="game-price">
+                Prezzo intero: {game.gamePrice}€
+              </span>
+              <span className="availability">
+                Disponibilità: {game.isAvailable ? "Yes" : "No"}
+              </span>
             </Card.Text>
-            <Button variant="primary">Noleggia</Button>
+            <Button className="nolo-btn" variant="transparent">
+              Noleggia
+            </Button>
           </Card.Body>
         </Card>
       ))}

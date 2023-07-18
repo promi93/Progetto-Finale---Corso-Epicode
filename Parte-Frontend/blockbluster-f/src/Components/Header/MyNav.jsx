@@ -1,5 +1,4 @@
-// MyNav.js
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Navbar, Container, Nav, Form, Button, Modal } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
@@ -10,6 +9,9 @@ const MyNav = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
+
+  const inputRef = useRef(null);
+  const searchBtnRef = useRef(null);
 
   const openModal = () => {
     setShowModal(true);
@@ -29,12 +31,35 @@ const MyNav = () => {
 
   const handleSearchToggle = () => {
     setShowSearch(!showSearch);
+    if (!showSearch) {
+      setTimeout(() => {
+        inputRef?.current?.focus();
+      }, 0);
+    }
   };
 
   const handleRegister = () => {
     openRegisterModal();
     closeModal();
   };
+
+  const handleDocumentClick = (event) => {
+    if (
+      searchBtnRef?.current?.contains(event.target) ||
+      inputRef?.current?.contains(event.target)
+    ) {
+      return;
+    }
+    setShowSearch(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary bg-nav shadow">
@@ -51,25 +76,27 @@ const MyNav = () => {
             <Nav.Link href="/contacts">Contatti</Nav.Link>
             <Nav.Link href="#action3">Su di noi</Nav.Link>
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex align-items-center justify-content-center">
             {showSearch && (
               <Form.Control
                 type="search"
                 placeholder="cerca..."
-                className="me-2"
+                className="me-2 search-box"
                 aria-label="Search"
                 id="outlineBtn"
+                ref={inputRef}
               />
             )}
             <Button
               className={`search-btn ${showSearch ? "hidden" : ""}`}
               variant="transparent"
               onClick={handleSearchToggle}
+              ref={searchBtnRef}
             >
               <BsSearch />
             </Button>
+            <FaUser className="user shadow" onClick={openModal} />
           </Form>
-          <FaUser className="user" onClick={openModal} />
           <Modal show={showModal} onHide={closeModal}>
             <Modal.Header closeButton>
               <Modal.Title>Login</Modal.Title>

@@ -1,4 +1,3 @@
-// LoginForm.js
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 
@@ -22,6 +21,7 @@ const LoginForm = ({ onRegister }) => {
       if (response.ok) {
         const data = await response.json();
         console.log("Accesso effettuato con successo:", data);
+        alert("Accesso effettuato con successo");
         // Gestisci il successo dell'accesso, ad esempio, reindirizzando l'utente alla dashboard
       } else if (response.status === 401) {
         setError("Utente non registrato");

@@ -19,7 +19,7 @@ function MyHome() {
   return (
     <div className="home-container">
       <div className={`special-effect ${specialEffect ? "active" : ""}`} />
-      <Link to="/mygames">
+      <Link to="/games">
         <Button
           className={`special-button ${animate ? "animate" : ""}`}
           variant="transparent"

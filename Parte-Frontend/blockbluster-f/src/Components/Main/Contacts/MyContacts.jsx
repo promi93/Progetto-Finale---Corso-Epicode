@@ -33,7 +33,7 @@ function MyContacts() {
   };
 
   return (
-    <Container className="contact">
+    <Container>
       <Row className="mt-5">
         <Col className="d-flex align-items-center justify-content-center back-contact mt-5 p-5">
           <Form
@@ -42,44 +42,48 @@ function MyContacts() {
             style={{ width: "100%", maxWidth: "300px" }}
             onSubmit={handleSubmit}
           >
-            <h2 className="mb-4">Contact us</h2>
+            <h2 className="mb-4 c1">Contattaci</h2>
 
             <Form.Group controlId="name">
-              <Form.Label>Name</Form.Label>
+              <Form.Label className="c2">Nome e Cognome</Form.Label>
               <Form.Control
                 type="text"
                 value={name}
                 onChange={handleNameChange}
                 required
+                className="shadow"
               />
             </Form.Group>
 
             <Form.Group controlId="email" className="mt-5">
-              <Form.Label>Email address *</Form.Label>
+              <Form.Label className="c2">Indirizzo e-mail *</Form.Label>
               <Form.Control
                 type="email"
                 value={email}
                 onChange={handleEmailChange}
                 required
+                className="shadow"
               />
             </Form.Group>
 
             <Form.Group controlId="subject" className="mt-5">
-              <Form.Label>Subject</Form.Label>
+              <Form.Label className="c2">Soggetto</Form.Label>
               <Form.Control
                 type="text"
                 value={subject}
                 onChange={handleSubjectChange}
+                className="shadow"
               />
             </Form.Group>
 
             <Form.Group controlId="message" className="mt-5">
-              <Form.Label>Message</Form.Label>
+              <Form.Label className="c2">Messaggio</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
                 value={message}
                 onChange={handleMessageChange}
+                className="shadow"
               />
             </Form.Group>
 
