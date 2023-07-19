@@ -74,7 +74,7 @@ const MyNav = () => {
           >
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/contacts">Contatti</Nav.Link>
-            <Nav.Link href="#action3">Su di noi</Nav.Link>
+            <Nav.Link href="/chisiamo">Chi Siamo</Nav.Link>
           </Nav>
           <Form className="d-flex align-items-center justify-content-center">
             {showSearch && (
