@@ -1,9 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Navbar, Container, Nav, Form, Button, Modal } from "react-bootstrap";
+import {
+  Navbar,
+  Container,
+  Nav,
+  Form,
+  Button,
+  Image,
+  Modal,
+} from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
+import logo from "../../assets/image/logo.png";
 
 const MyNav = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -64,7 +73,6 @@ const MyNav = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary bg-nav shadow">
       <Container fluid>
-        <Navbar.Brand href="/">BlockBluster</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll" className="me-4">
           <Nav

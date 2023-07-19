@@ -2,59 +2,20 @@
   background-image: url("/src/assets/image/pic1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.special-effect {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-image: linear-gradient(
-    to right,
-    #ff6f00,
-    #ff6f00 20%,
-    #ffc107 20%,
-    #ffc107 40%,
-    #4caf50 40%,
-    #4caf50 60%,
-    #2196f3 60%,
-    #2196f3 80%,
-    #9c27b0 80%,
-    #9c27b0 100%
-  );
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-}
-
-.special-effect.active {
-  opacity: 0.5;
-  animation: spin 2s infinite linear;
-}
-
-@keyframes spin {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
 .special-button {
+  font-family: "Alfa Slab One", cursive;
   font-size: 24px;
   padding: 20px 60px;
   border: none;
   background-color: rgba(255, 255, 255, 0.191);
-  color: #fff;
+  color: #ff6200;
+  text-shadow: 3px 3px 6px rgb(255, 255, 255);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -66,16 +27,4 @@
 
 .special-button.animate {
   animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
 }

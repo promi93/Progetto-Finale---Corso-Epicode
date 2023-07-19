@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Autour+One&display=swap");
+.chi {
+  background-image: url("/src/assets/image/pic2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.pic-size {
+  height: 21em;
+  width: 40em;
+  border-radius: 20px;
+  opacity: 0.9;
+  box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.681);
+}
+
+.logo {
+  width: 400px;
+  margin-bottom: -20px;
+  margin-top: -10px;
+}
+
+.t1 {
+  font-family: "Tilt Warp", cursive !important;
+}/*# sourceMappingURL=ChiSiamo.css.map */

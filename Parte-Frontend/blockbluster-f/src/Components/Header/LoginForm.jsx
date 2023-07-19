@@ -5,6 +5,7 @@ const LoginForm = ({ onRegister }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,8 +22,10 @@ const LoginForm = ({ onRegister }) => {
       if (response.ok) {
         const data = await response.json();
         console.log("Accesso effettuato con successo:", data);
+        // Salva l'utente registrato su localStorage
+        localStorage.setItem("loggedInUser", JSON.stringify(data.user));
+        setIsLoggedIn(true);
         alert("Accesso effettuato con successo");
-        // Gestisci il successo dell'accesso, ad esempio, reindirizzando l'utente alla dashboard
       } else if (response.status === 401) {
         setError("Utente non registrato");
       } else if (response.status === 400) {

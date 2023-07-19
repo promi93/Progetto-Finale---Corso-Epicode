@@ -4,6 +4,7 @@ import "../src/css/MyNav.css";
 import "../src/css/MyHome.css";
 import "../src/css/MyContacts.css";
 import "../src/css/MyGames.css";
+import "../src/css/ChiSiamo.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./Components/Header/MyNav";
 import MyGames from "./Components/Main/GamesPage/MyGames";
@@ -11,6 +12,7 @@ import MyHome from "./Components/Main/HomePage/MyHome";
 import MyContacts from "./Components/Main/Contacts/MyContacts";
 import SingleCard from "./Components/Main/GamesPage/SingleCard";
 import ChiSiamo from "./Components/Main/Chi Siamo/ChiSiamo";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route path="/contacts" Component={MyContacts} />
         <Route path="/chisiamo" Component={ChiSiamo} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

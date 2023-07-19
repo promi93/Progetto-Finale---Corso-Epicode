@@ -33,7 +33,7 @@ public class CustomGame {
 	
 	private String title;
 	
-	@Transient
+	 @Column(columnDefinition = "text")
 	private String description;
 	
 	@Enumerated(EnumType.STRING)

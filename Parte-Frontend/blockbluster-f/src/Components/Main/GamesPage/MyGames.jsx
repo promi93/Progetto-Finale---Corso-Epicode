@@ -8,6 +8,9 @@ import { BsCart4, BsInfoCircleFill } from "react-icons/bs";
 function MyGames() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const gamesPerPage = 10;
 
   useEffect(() => {
     fetch("http://localhost:8080/api/auth/games", {
@@ -33,7 +36,17 @@ function MyGames() {
       });
   }, []);
 
-  if (games.length === 0) {
+  // Calcola l'indice dell'ultimo gioco nella pagina corrente
+  const indexOfLastGame = currentPage * gamesPerPage;
+  // Calcola l'indice del primo gioco nella pagina corrente
+  const indexOfFirstGame = indexOfLastGame - gamesPerPage;
+  // Elenca i giochi da visualizzare nella pagina corrente
+  const currentGames = games.slice(indexOfFirstGame, indexOfLastGame);
+
+  // Cambia pagina
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  if (loading) {
     return (
       <div className="d-flex justify-content-center mt-5">
         <Spinner animation="border" role="status" className="text-secondary">
@@ -44,37 +57,60 @@ function MyGames() {
   }
 
   return (
-    <div className="d-flex flex-wrap justify-content-center mt-5">
-      {games.map((game) => (
-        <Card className="card" key={game.id}>
-          <Link to={`/games/${game.id}`} className="card-link">
-            <Card.Img src={game.image} style={{ height: "200px" }} />
-          </Link>
-          <Card.Body>
-            <Card.Title className="t1">{game.title}</Card.Title>
-            <Card.Text className="t2">
-              <span className="category">Categoria: {game.category}</span>
-              <span className="rental-price">
-                Prezzo noleggio: {game.rentalPrice}€
-              </span>
-              <span className="game-price">
-                Prezzo intero: {game.gamePrice}€
-              </span>
-              <span className="availability">
-                Disponibilità: {game.isAvailable ? "Yes" : "No"}
-              </span>
-            </Card.Text>
-            <Button className="nolo-btn" variant="transparent">
-              <BsCart4 />
-            </Button>
+    <div>
+      <div className="d-flex flex-wrap justify-content-center mt-5">
+        {currentGames.map((game) => (
+          <Card className="card" key={game.id}>
             <Link to={`/games/${game.id}`} className="card-link">
-              <Button className="info-btn ms-5" variant="transparent">
-                <BsInfoCircleFill />
-              </Button>
+              <Card.Img src={game.image} style={{ height: "200px" }} />
             </Link>
-          </Card.Body>
-        </Card>
-      ))}
+            <Card.Body>
+              <Card.Title className="t1">{game.title}</Card.Title>
+              <Card.Text className="t2">
+                <span className="category">Categoria: {game.category}</span>
+                <span className="rental-price">
+                  Prezzo noleggio: {game.rentalPrice}€
+                </span>
+                <span className="game-price">
+                  Prezzo intero: {game.gamePrice}€
+                </span>
+                <span className="availability">
+                  Disponibilità: {game.isAvailable ? "Yes" : "No"}
+                </span>
+              </Card.Text>
+              <Button className="nolo-btn" variant="transparent">
+                <BsCart4 />
+              </Button>
+              <Link to={`/games/${game.id}`} className="card-link">
+                <Button className="info-btn ms-5" variant="transparent">
+                  <BsInfoCircleFill />
+                </Button>
+              </Link>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
+      <div className="pagination">
+        <ul className="pagination-list">
+          {Array.from({ length: Math.ceil(games.length / gamesPerPage) }).map(
+            (_, index) => (
+              <li
+                key={index}
+                className={`pagination-item ${
+                  currentPage === index + 1 ? "active" : ""
+                }`}
+              >
+                <button
+                  className="pagination-link"
+                  onClick={() => paginate(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              </li>
+            )
+          )}
+        </ul>
+      </div>
     </div>
   );
 }

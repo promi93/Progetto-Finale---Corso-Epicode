@@ -1,31 +1,18 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
+import { FaGooglePlay } from "react-icons/fa";
+import logo from "../../../assets/image/logo.png";
 
 function MyHome() {
-  const [animate, setAnimate] = useState(false);
-  const [specialEffect, setSpecialEffect] = useState(false);
-
-  const handleClick = () => {
-    setAnimate(true);
-    setSpecialEffect(true);
-
-    setTimeout(() => {
-      setAnimate(false);
-      setSpecialEffect(false);
-    }, 1000);
-  };
-
   return (
     <div className="home-container">
-      <div className={`special-effect ${specialEffect ? "active" : ""}`} />
+      <div className="d-flex">
+        <Image src={logo} />
+      </div>
+      <div className="special-effect" />
       <Link to="/games">
-        <Button
-          className={`special-button ${animate ? "animate" : ""}`}
-          variant="transparent"
-          onClick={handleClick}
-        >
-          Inizia
+        <Button className="special-button" variant="transparent">
+          <FaGooglePlay />
         </Button>
       </Link>
     </div>
