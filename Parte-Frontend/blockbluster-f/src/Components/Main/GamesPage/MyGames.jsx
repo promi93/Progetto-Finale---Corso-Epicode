@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
 import { BsCart4, BsInfoCircleFill, BsThreeDotsVertical } from "react-icons/bs";
 import { SearchContext } from "./SearchProvider";
 import Dropdown from "react-bootstrap/Dropdown";

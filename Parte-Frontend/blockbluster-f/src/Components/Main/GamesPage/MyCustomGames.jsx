@@ -99,20 +99,6 @@ function MyCustomGames() {
                     required
                   />
                 </Form.Group>
-                {/* <Form.Group controlId="isAvailable">
-                  <Form.Check
-                    type="checkbox"
-                    label="Disponibile"
-                    name="isAvailable"
-                    checked={formData.isAvailable}
-                    onChange={(e) => {
-                      setFormData((prevData) => ({
-                        ...prevData,
-                        isAvailable: e.target.checked,
-                      }));
-                    }}
-                  />
-                </Form.Group> */}
                 <Button variant="primary" type="submit" className="my-4">
                   Carica gioco
                 </Button>
