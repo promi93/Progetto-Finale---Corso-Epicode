@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
+import Form from "react-bootstrap/Form";
 import { BsCart4, BsInfoCircleFill } from "react-icons/bs";
+import { SearchContext } from "./SearchProvider";
 
 function MyGames() {
+  const { searchTitle } = useContext(SearchContext);
   const [games, setGames] = useState([]);
+  const [filteredGames, setFilteredGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [sortBy, setSortBy] = useState("");
   const gamesPerPage = 10;
 
   useEffect(() => {
@@ -36,14 +41,57 @@ function MyGames() {
       });
   }, []);
 
-  // Calcola l'indice dell'ultimo gioco nella pagina corrente
-  const indexOfLastGame = currentPage * gamesPerPage;
-  // Calcola l'indice del primo gioco nella pagina corrente
-  const indexOfFirstGame = indexOfLastGame - gamesPerPage;
-  // Elenca i giochi da visualizzare nella pagina corrente
-  const currentGames = games.slice(indexOfFirstGame, indexOfLastGame);
+  useEffect(() => {
+    const filtered = games
+      .filter(
+        (game) =>
+          (!selectedCategory || game.category === selectedCategory) &&
+          (!searchTitle ||
+            game.title.toLowerCase().includes(searchTitle.toLowerCase()))
+      )
+      .sort((a, b) => {
+        if (sortBy === "asc") {
+          return a.title.localeCompare(b.title);
+        } else if (sortBy === "desc") {
+          return b.title.localeCompare(a.title);
+        } else {
+          return 0;
+        }
+      });
 
-  // Cambia pagina
+    setFilteredGames(filtered);
+  }, [games, selectedCategory, searchTitle, sortBy]);
+
+  const categories = [
+    "FAMILY",
+    "PARTY",
+    "STRATEGY",
+    "CARD",
+    "ROLE_PLAY",
+    "CLASSIC",
+    "WORD",
+  ];
+
+  const sortOptions = [
+    { value: "", label: "Nessun ordinamento" },
+    { value: "asc", label: "A-Z" },
+    { value: "desc", label: "Z-A" },
+  ];
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (event) => {
+    setSortBy(event.target.value);
+  };
+
+  const indexOfLastGame = currentPage * gamesPerPage;
+  const indexOfFirstGame = indexOfLastGame - gamesPerPage;
+
+  const currentGames = filteredGames.slice(indexOfFirstGame, indexOfLastGame);
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   if (loading) {
@@ -58,6 +106,32 @@ function MyGames() {
 
   return (
     <div>
+      <div className="filters">
+        <Form.Select
+          className="category-filter"
+          value={selectedCategory}
+          onChange={handleCategoryChange}
+        >
+          <option value="">Tutte le categorie</option>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </Form.Select>
+        <Form.Select
+          className="sort-filter"
+          value={sortBy}
+          onChange={handleSortChange}
+        >
+          {sortOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </Form.Select>
+      </div>
+
       <div className="d-flex flex-wrap justify-content-center mt-5">
         {currentGames.map((game) => (
           <Card className="card" key={game.id}>
@@ -90,25 +164,26 @@ function MyGames() {
           </Card>
         ))}
       </div>
+
       <div className="pagination">
         <ul className="pagination-list">
-          {Array.from({ length: Math.ceil(games.length / gamesPerPage) }).map(
-            (_, index) => (
-              <li
-                key={index}
-                className={`pagination-item ${
-                  currentPage === index + 1 ? "active" : ""
-                }`}
+          {Array.from({
+            length: Math.ceil(filteredGames.length / gamesPerPage),
+          }).map((_, index) => (
+            <li
+              key={index}
+              className={`pagination-item ${
+                currentPage === index + 1 ? "active" : ""
+              }`}
+            >
+              <button
+                className="pagination-link"
+                onClick={() => paginate(index + 1)}
               >
-                <button
-                  className="pagination-link"
-                  onClick={() => paginate(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              </li>
-            )
-          )}
+                {index + 1}
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

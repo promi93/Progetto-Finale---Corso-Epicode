@@ -58,34 +58,48 @@ function SingleCard() {
           <Card.Body className="ms-5">
             <Card.Title className="t1">{gameData.title}</Card.Title>
             <Card.Text className="t2">
-              <span className="category text-danger">Categoria:</span>
-              <p> {gameData.category} </p>
-              <span className="description text-danger">Info:</span>
-              <p> {gameData.description} </p>
-              <span className="rental-price text-danger">Prezzo noleggio:</span>
-              <p> {gameData.rentalPrice}€ </p>
-              <span className="game-price text-danger">Prezzo intero:</span>
-              <p> {gameData.gamePrice}€ </p>
-              <span className="availability text-info">Disponibilità:</span>
-              <p> {gameData.isAvailable ? "Yes" : "No"} </p>
-              <span className="rating text-info">Valutazione:</span>
-              <div className="stella">
-                {[1, 2, 3, 4, 5].map((value) => (
-                  <svg
-                    key={value}
-                    onClick={() => handleRating(value)}
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill={value <= rating ? "gold" : "none"}
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="feather feather-star"
-                  >
-                    <polygon points="12 2 15.09 8.32 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.32 12 2" />
-                  </svg>
-                ))}
+              <div>
+                <span className="category text-danger">Categoria:</span>{" "}
+                {gameData.category}
+              </div>
+              <div>
+                <span className="description text-danger">Info:</span>{" "}
+                {gameData.description}
+              </div>
+              <div>
+                <span className="rental-price text-danger">
+                  Prezzo noleggio:
+                </span>{" "}
+                {gameData.rentalPrice}€
+              </div>
+              <div>
+                <span className="game-price text-danger">Prezzo intero:</span>{" "}
+                {gameData.gamePrice}€
+              </div>
+              <div>
+                <span className="availability text-info">Disponibilità:</span>{" "}
+                {gameData.isAvailable ? "Yes" : "No"}
+              </div>
+              <div>
+                <span className="rating text-info">Valutazione:</span>
+                <div className="stella">
+                  {[1, 2, 3, 4, 5].map((value) => (
+                    <svg
+                      key={value}
+                      onClick={() => handleRating(value)}
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill={value <= rating ? "gold" : "none"}
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-star"
+                    >
+                      <polygon points="12 2 15.09 8.32 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.32 12 2" />
+                    </svg>
+                  ))}
+                </div>
               </div>
             </Card.Text>
             <Button className="nolo-btn" variant="transparent">

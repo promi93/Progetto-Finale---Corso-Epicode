@@ -13,19 +13,22 @@ import MyContacts from "./Components/Main/Contacts/MyContacts";
 import SingleCard from "./Components/Main/GamesPage/SingleCard";
 import ChiSiamo from "./Components/Main/Chi Siamo/ChiSiamo";
 import Footer from "./Components/Footer/Footer";
+import { SearchProvider } from "./Components/Main/GamesPage/SearchProvider";
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route exact path="/" Component={MyHome} />
-        <Route path="/games" Component={MyGames} />
-        <Route path="/games/:id" Component={SingleCard} />
-        <Route path="/contacts" Component={MyContacts} />
-        <Route path="/chisiamo" Component={ChiSiamo} />
-      </Routes>
-      <Footer />
+      <SearchProvider>
+        <NavBar />
+        <Routes>
+          <Route exact path="/" Component={MyHome} />
+          <Route path="/games" Component={MyGames} />
+          <Route path="/games/:id" Component={SingleCard} />
+          <Route path="/contacts" Component={MyContacts} />
+          <Route path="/chisiamo" Component={ChiSiamo} />
+        </Routes>
+        <Footer />
+      </SearchProvider>
     </BrowserRouter>
   );
 }

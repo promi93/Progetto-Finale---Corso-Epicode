@@ -6,8 +6,8 @@ import logo from "../../../assets/image/logo.png";
 function MyHome() {
   return (
     <div className="home-container">
-      <div className="d-flex">
-        <Image src={logo} />
+      <div className="d-flex mt-5">
+        <Image src={logo} className="mt-5" />
       </div>
       <div className="special-effect" />
       <Link to="/games">

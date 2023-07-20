@@ -1,24 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  Navbar,
-  Container,
-  Nav,
-  Form,
-  Button,
-  Image,
-  Modal,
-} from "react-bootstrap";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { Navbar, Container, Nav, Form, Button, Modal } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
-import logo from "../../assets/image/logo.png";
+import { SearchContext } from "../Main/GamesPage/SearchProvider";
 
 const MyNav = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
 
+  const { searchTitle, setSearchTitle } = useContext(SearchContext);
   const inputRef = useRef(null);
   const searchBtnRef = useRef(null);
 
@@ -38,8 +31,9 @@ const MyNav = () => {
     setRegisterModal(false);
   };
 
-  const handleSearchToggle = () => {
+  const handleSearchToggle = (e) => {
     setShowSearch(!showSearch);
+    setSearchTitle("");
     if (!showSearch) {
       setTimeout(() => {
         inputRef?.current?.focus();
@@ -93,8 +87,10 @@ const MyNav = () => {
                 aria-label="Search"
                 id="outlineBtn"
                 ref={inputRef}
+                value={searchTitle} // Assegna il valore di searchTitle all'input
+                onChange={(e) => setSearchTitle(e.target.value)} // Aggiorna searchTitle quando l'utente digita
               />
-            )}
+            )}{" "}
             <Button
               className={`search-btn ${showSearch ? "hidden" : ""}`}
               variant="transparent"
