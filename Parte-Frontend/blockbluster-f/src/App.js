@@ -14,6 +14,7 @@ import SingleCard from "./Components/Main/GamesPage/SingleCard";
 import ChiSiamo from "./Components/Main/Chi Siamo/ChiSiamo";
 import Footer from "./Components/Footer/Footer";
 import { SearchProvider } from "./Components/Main/GamesPage/SearchProvider";
+import MyCustomGames from "./Components/Main/GamesPage/MyCustomGames";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/" Component={MyHome} />
           <Route path="/games" Component={MyGames} />
           <Route path="/games/:id" Component={SingleCard} />
+          <Route path="/customgames" Component={MyCustomGames} />
           <Route path="/contacts" Component={MyContacts} />
           <Route path="/chisiamo" Component={ChiSiamo} />
         </Routes>

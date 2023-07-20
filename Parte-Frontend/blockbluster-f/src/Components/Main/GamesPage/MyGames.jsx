@@ -4,8 +4,10 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 import Form from "react-bootstrap/Form";
-import { BsCart4, BsInfoCircleFill } from "react-icons/bs";
+import Row from "react-bootstrap/Row";
+import { BsCart4, BsInfoCircleFill, BsThreeDotsVertical } from "react-icons/bs";
 import { SearchContext } from "./SearchProvider";
+import Dropdown from "react-bootstrap/Dropdown";
 
 function MyGames() {
   const { searchTitle } = useContext(SearchContext);
@@ -106,30 +108,40 @@ function MyGames() {
 
   return (
     <div>
-      <div className="filters">
-        <Form.Select
-          className="category-filter"
-          value={selectedCategory}
-          onChange={handleCategoryChange}
-        >
-          <option value="">Tutte le categorie</option>
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </Form.Select>
-        <Form.Select
-          className="sort-filter"
-          value={sortBy}
-          onChange={handleSortChange}
-        >
-          {sortOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </Form.Select>
+      <div className="d-flex justify-content-between">
+        <Dropdown className="ms-4 mt-2">
+          <Dropdown.Toggle variant="trasparent" className="drop">
+            <BsThreeDotsVertical />
+          </Dropdown.Toggle>
+          <Dropdown.Menu className="carica">
+            <Dropdown.Item href="/customgames">Carica un gioco</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        <div className="filters">
+          <Form.Select
+            className="category-filter filtri"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+          >
+            <option value="">Tutte le categorie</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </Form.Select>
+          <Form.Select
+            className="sort-filter filtri"
+            value={sortBy}
+            onChange={handleSortChange}
+          >
+            {sortOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </Form.Select>
+        </div>
       </div>
 
       <div className="d-flex flex-wrap justify-content-center mt-5">

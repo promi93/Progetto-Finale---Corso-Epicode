@@ -1,53 +1,171 @@
-import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import React, { useState } from "react";
+import { Form, Button, Row, Col, Container } from "react-bootstrap";
 
 function MyCustomGames() {
-  const [customGames, setCustomGames] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
 
-  useEffect(() => {
-    fetchCustomGames();
-  }, []);
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    category: "",
+    rentalPrice: "",
+    gamePrice: "",
+    isAvailable: false,
+    image: "",
+  });
 
-  const fetchCustomGames = async () => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
       const response = await fetch(
-        "http://localhost:8080/api/auth/customgames"
+        "http://localhost:8080/api/auth/customgames",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
       );
+
       if (response.ok) {
-        const data = await response.json();
-        setCustomGames(data);
+        console.log("Gioco personalizzato inviato con successo al backend");
+      } else if (response === 500) {
+        console.log("Gioco già esistente!");
       } else {
-        throw new Error("Errore durante il recupero dei giochi personalizzati");
+        throw new Error("Errore durante l'invio del gioco al backend");
+      }
+
+      // Carica il file solo se è stato selezionato
+      if (selectedFile) {
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+
+        const fileUploadResponse = await fetch(
+          "http://localhost:8080/api/auth/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        if (fileUploadResponse.ok) {
+          console.log("File caricato con successo!");
+        } else {
+          throw new Error("Errore durante il caricamento del file.");
+        }
       }
     } catch (error) {
-      console.error(
-        "Errore durante il recupero dei giochi personalizzati:",
-        error
-      );
+      console.error("Errore durante l'invio del gioco al backend:", error);
     }
   };
 
   return (
-    <div>
-      {customGames.map((customGame) => (
-        <Card key={customGame.id} style={{ width: "18rem", margin: "10px" }}>
-          <Card.Body>
-            <Card.Title>{customGame.title}</Card.Title>
-            <Card.Text>
-              Category: {customGame.category}
-              <br />
-              Rental Price: {customGame.rentalPrice}
-              <br />
-              Game Price: {customGame.gamePrice}
-              <br />
-              Available: {customGame.isAvailable ? "Yes" : "No"}
-            </Card.Text>
-            <Button variant="primary">Noleggia</Button>
-          </Card.Body>
-        </Card>
-      ))}
-    </div>
+    <Container>
+      <Row>
+        <Col className="t2 mt-5">
+          <h1 className="t1 mb-5">Inserisci il tuo gioco da tavolo</h1>
+          <Form onSubmit={handleSubmit}>
+            <Row>
+              <Col>
+                <Form.Group controlId="title">
+                  <Form.Label>Titolo</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    className="shadow mb-5 "
+                  />
+                </Form.Group>
+                <Form.Group controlId="category">
+                  <Form.Label>Categoria</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    className="shadow mb-5"
+                  />
+                </Form.Group>
+                <Form.Group controlId="rentalPrice">
+                  <Form.Label>Prezzo noleggio</Form.Label>
+                  <Form.Control
+                    type="number"
+                    name="rentalPrice"
+                    value={formData.rentalPrice}
+                    onChange={handleChange}
+                    className="shadow mb-5"
+                  />
+                </Form.Group>
+                <Form.Group controlId="isAvailable">
+                  <Form.Check
+                    type="checkbox"
+                    label="Disponibile"
+                    name="isAvailable"
+                    checked={formData.isAvailable}
+                    onChange={(e) => {
+                      setFormData((prevData) => ({
+                        ...prevData,
+                        isAvailable: e.target.checked,
+                      }));
+                    }}
+                  />
+                </Form.Group>
+                <Button variant="primary" type="submit" className="my-4">
+                  Carica gioco
+                </Button>
+              </Col>
+              <Col>
+                <Form.Group controlId="description">
+                  <Form.Label>Descrizione</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    className="shadow mb-5"
+                  />
+                </Form.Group>
+                <Form.Group controlId="gamePrice">
+                  <Form.Label>Prezzo intero</Form.Label>
+                  <Form.Control
+                    type="number"
+                    name="gamePrice"
+                    value={formData.gamePrice}
+                    onChange={handleChange}
+                    className="shadow mb-5"
+                  />
+                </Form.Group>
+                <Form.Group controlId="image">
+                  <Form.Label>Carica immagine</Form.Label>
+                  <Form.Control
+                    type="file"
+                    name="image"
+                    onChange={handleFileChange}
+                    className="shadow mb-5"
+                  />
+                </Form.Group>{" "}
+              </Col>
+            </Row>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
