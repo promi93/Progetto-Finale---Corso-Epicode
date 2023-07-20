@@ -7,7 +7,7 @@ function Footer() {
     <footer className="bg-dark text-light py-4 ">
       <Container>
         <Row>
-          <Col xs={12} sm={6} md={3} xl={2}>
+          <Col xs={12} sm={6} md={3} xl={2} xxl={2}>
             <h5>About Us</h5>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
