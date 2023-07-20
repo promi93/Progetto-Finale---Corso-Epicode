@@ -31,6 +31,11 @@ function MyCustomGames() {
     e.preventDefault();
 
     try {
+      const formDataWithoutImage = { ...formData };
+      if (selectedFile) {
+        formDataWithoutImage.image = selectedFile.name;
+      }
+
       const response = await fetch(
         "http://localhost:8080/api/auth/customgames",
         {
@@ -38,36 +43,15 @@ function MyCustomGames() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(formDataWithoutImage),
         }
       );
-
       if (response.ok) {
         console.log("Gioco personalizzato inviato con successo al backend");
-      } else if (response === 500) {
-        console.log("Gioco già esistente!");
+      } else if (response.status === 500) {
+        console.log("Gioco già presente!");
       } else {
         throw new Error("Errore durante l'invio del gioco al backend");
-      }
-
-      // Carica il file solo se è stato selezionato
-      if (selectedFile) {
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-
-        const fileUploadResponse = await fetch(
-          "http://localhost:8080/api/auth/upload",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
-
-        if (fileUploadResponse.ok) {
-          console.log("File caricato con successo!");
-        } else {
-          throw new Error("Errore durante il caricamento del file.");
-        }
       }
     } catch (error) {
       console.error("Errore durante l'invio del gioco al backend:", error);
@@ -89,7 +73,8 @@ function MyCustomGames() {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    className="shadow mb-5 "
+                    className="shadow mb-5"
+                    required
                   />
                 </Form.Group>
                 <Form.Group controlId="category">
@@ -100,6 +85,7 @@ function MyCustomGames() {
                     value={formData.category}
                     onChange={handleChange}
                     className="shadow mb-5"
+                    required
                   />
                 </Form.Group>
                 <Form.Group controlId="rentalPrice">
@@ -110,9 +96,10 @@ function MyCustomGames() {
                     value={formData.rentalPrice}
                     onChange={handleChange}
                     className="shadow mb-5"
+                    required
                   />
                 </Form.Group>
-                <Form.Group controlId="isAvailable">
+                {/* <Form.Group controlId="isAvailable">
                   <Form.Check
                     type="checkbox"
                     label="Disponibile"
@@ -125,7 +112,7 @@ function MyCustomGames() {
                       }));
                     }}
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <Button variant="primary" type="submit" className="my-4">
                   Carica gioco
                 </Button>
@@ -139,6 +126,7 @@ function MyCustomGames() {
                     value={formData.description}
                     onChange={handleChange}
                     className="shadow mb-5"
+                    required
                   />
                 </Form.Group>
                 <Form.Group controlId="gamePrice">
@@ -149,6 +137,7 @@ function MyCustomGames() {
                     value={formData.gamePrice}
                     onChange={handleChange}
                     className="shadow mb-5"
+                    required
                   />
                 </Form.Group>
                 <Form.Group controlId="image">
@@ -159,7 +148,7 @@ function MyCustomGames() {
                     onChange={handleFileChange}
                     className="shadow mb-5"
                   />
-                </Form.Group>{" "}
+                </Form.Group>
               </Col>
             </Row>
           </Form>
