@@ -618,3 +618,7 @@ Caused by: java.lang.IllegalArgumentException: Unrecognized legacy `hibernate.hb
 18:17:52.197 [http-nio-8080-exec-3] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 22001
 18:17:52.197 [http-nio-8080-exec-3] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - ERROR: value too long for type character varying(255)
 18:17:52.199 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [ERROR: value too long for type character varying(255)] [update games set category=?,description=?,game_price=?,image=?,availability=?,rental_price=?,title=? where id=?]; SQL [update games set category=?,description=?,game_price=?,image=?,availability=?,rental_price=?,title=? where id=?]]
+20:00:30.931 [HikariPool-4 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=6m32s254ms).
+20:53:56.752 [HikariPool-4 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=44m55s854ms).
+21:12:36.570 [HikariPool-4 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=18m9s810ms).
+22:53:55.280 [HikariPool-4 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=6m17s694ms).

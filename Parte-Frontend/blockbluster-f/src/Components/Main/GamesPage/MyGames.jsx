@@ -38,12 +38,8 @@ function MyGames() {
   };
 
   const calculateCartTotal = () => {
-    const total = cart.reduce((acc, game) => acc + game.rentalPrice, 0);
+    const total = cart.reduce((acc, game) => (acc += game.rentalPrice), 0);
     setCartTotal(total);
-  };
-
-  const toggleCartModal = () => {
-    setIsSidebarOpen((prevState) => !prevState);
   };
 
   const handleCloseSidebar = () => {
