@@ -1,7 +1,7 @@
-00:41:26.144 [RMI TCP Connection(568)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
-00:41:26.153 [RMI TCP Connection(568)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
-00:41:26.153 [RMI TCP Connection(568)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
-00:41:26.156 [RMI TCP Connection(568)-127.0.0.1] WARN  o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-4 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+00:22:11.288 [RMI TCP Connection(622)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+00:22:11.308 [RMI TCP Connection(622)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+00:22:11.309 [RMI TCP Connection(622)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+00:22:11.312 [RMI TCP Connection(622)-127.0.0.1] WARN  o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
  java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
  java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
@@ -11,108 +11,34 @@
  java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
  java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
  java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
-00:41:26.160 [RMI TCP Connection(568)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-00:41:26.160 [RMI TCP Connection(568)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
-00:41:26.161 [RMI TCP Connection(568)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
-10:54:30.153 [restartedMain] INFO  com.project.BlockBlusterApplication - Starting BlockBlusterApplication using Java 17.0.7 with PID 1746 (/Users/a/Desktop/Progetto Finale - Corso Epicode/Parte-Backend/BlockBluster/target/classes started by a in /Users/a/Desktop/Progetto Finale - Corso Epicode/Parte-Backend/BlockBluster)
-10:54:30.155 [restartedMain] INFO  com.project.BlockBlusterApplication - No active profile set, falling back to 1 default profile: "default"
-10:54:30.206 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-10:54:30.207 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-10:54:31.047 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-10:54:31.147 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 85 ms. Found 5 JPA repository interfaces.
-10:54:32.037 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-10:54:32.052 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-10:54:32.053 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.10]
-10:54:32.129 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-10:54:32.129 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1921 ms
-10:54:32.309 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-10:54:32.398 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.5.Final
-10:54:32.402 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
-10:54:32.629 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
-10:54:32.850 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-10:54:32.871 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-10:54:33.207 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@bc61932
-10:54:33.209 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-10:54:33.628 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
-10:54:34.594 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-10:54:34.936 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-10:54:35.664 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-10:54:35.993 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6c48a50c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4016d43c, org.springframework.security.web.context.SecurityContextHolderFilter@1168764c, org.springframework.security.web.header.HeaderWriterFilter@30a6fc85, org.springframework.web.filter.CorsFilter@6e71f1a1, org.springframework.security.web.authentication.logout.LogoutFilter@38a5072b, com.project.security.security.JwtAuthenticationFilter@d903de8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@b69b078, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@219dba4a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@47946e, org.springframework.security.web.session.SessionManagementFilter@6aabd6eb, org.springframework.security.web.access.ExceptionTranslationFilter@9c48abd, org.springframework.security.web.access.intercept.AuthorizationFilter@31c3a627]
-10:54:36.146 [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
-10:54:36.276 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-10:54:36.309 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
-10:54:36.318 [restartedMain] INFO  com.project.BlockBlusterApplication - Started BlockBlusterApplication in 6.661 seconds (process running for 12.464)
-10:54:39.423 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-10:54:39.423 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-10:54:39.425 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-12:32:25.683 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:32:37.241 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:33:05.773 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:34:17.274 [http-nio-8080-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:34:23.431 [http-nio-8080-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:34:31.604 [http-nio-8080-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:36:31.832 [http-nio-8080-exec-9] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:36:41.180 [http-nio-8080-exec-10] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:36:50.144 [http-nio-8080-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:37:38.570 [http-nio-8080-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:37:39.661 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:37:59.130 [http-nio-8080-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('}' (code 125)): was expecting double-quote to start field name]
-12:41:21.265 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 4 class path changes (0 additions, 0 deletions, 4 modifications)
-12:41:21.271 [Thread-5] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
-12:41:21.272 [Thread-5] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
-12:41:21.276 [Thread-5] WARN  o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
- java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
- java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
- java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
- java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
- java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
- java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
- java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
- java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
-12:41:21.281 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-12:41:21.284 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-12:41:21.286 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-12:41:21.428 [restartedMain] INFO  com.project.BlockBlusterApplication - Starting BlockBlusterApplication using Java 17.0.7 with PID 1746 (/Users/a/Desktop/Progetto Finale - Corso Epicode/Parte-Backend/BlockBluster/target/classes started by a in /Users/a/Desktop/Progetto Finale - Corso Epicode/Parte-Backend/BlockBluster)
-12:41:21.429 [restartedMain] INFO  com.project.BlockBlusterApplication - No active profile set, falling back to 1 default profile: "default"
-12:41:21.593 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-12:41:21.608 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 5 JPA repository interfaces.
-12:41:21.721 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-12:41:21.721 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-12:41:21.722 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.10]
-12:41:21.732 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-12:41:21.732 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 301 ms
-12:41:21.774 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-12:41:21.780 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
-12:41:21.780 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-12:41:21.781 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-12:41:21.803 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@70943382
-12:41:21.803 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-12:41:21.832 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
-12:41:21.901 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-12:41:21.966 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-12:41:22.187 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-12:41:22.295 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2ea284bd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1a4f6ca2, org.springframework.security.web.context.SecurityContextHolderFilter@3e8cc715, org.springframework.security.web.header.HeaderWriterFilter@26b47040, org.springframework.web.filter.CorsFilter@1c55dd52, org.springframework.security.web.authentication.logout.LogoutFilter@793cf31b, com.project.security.security.JwtAuthenticationFilter@53333f90, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1bf072c3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ec3278d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5080c63b, org.springframework.security.web.session.SessionManagementFilter@540d642a, org.springframework.security.web.access.ExceptionTranslationFilter@15861bfc, org.springframework.security.web.access.intercept.AuthorizationFilter@58129162]
-12:41:22.337 [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
-12:41:22.396 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-12:41:22.407 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
-12:41:22.411 [restartedMain] INFO  com.project.BlockBlusterApplication - Started BlockBlusterApplication in 1.035 seconds (process running for 6418.574)
-12:41:22.417 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
-12:43:06.678 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-12:43:06.678 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-12:43:06.680 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-12:43:06.696 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:43:07.873 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.project.enumeration.Category` from String "Family": not one of the values accepted for Enum class: [CARD, CLASSIC, STRATEGY, FAMILY, PARTY, WORD, ROLE_PLAY]]
-12:43:25.584 [http-nio-8080-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [jakarta.persistence.EntityExistsException: Il gioco con nome Gioco inventato sul momento già esiste.]
-12:44:50.692 [http-nio-8080-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [jakarta.persistence.EntityExistsException: Il gioco con nome Gioco inventato sul momento già esiste.]
-12:45:20.796 [http-nio-8080-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [jakarta.persistence.EntityExistsException: Il gioco con nome Gioco inventato sul momento già esiste.]
-12:45:34.599 [http-nio-8080-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [jakarta.persistence.EntityExistsException: Il gioco con nome Gioco inventato sul momento già esiste.]
-12:45:39.803 [http-nio-8080-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [jakarta.persistence.EntityExistsException: Il gioco con nome Gioco inventato sul momento già esiste.]
-12:52:43.415 [http-nio-8080-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot coerce empty String ("") to `com.project.enumeration.Category` value (but could if coercion was enabled using `CoercionConfig`)]
-13:38:06.577 [HikariPool-2 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=30m14s519ms).
-14:20:17.580 [HikariPool-2 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=19m40s807ms).
-14:39:15.614 [HikariPool-2 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=14m58s98ms).
-15:28:38.820 [HikariPool-2 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=42m53s117ms).
-16:09:18.687 [HikariPool-2 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=14m9s702ms).
-17:26:21.542 [http-nio-8080-exec-10] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot coerce empty String ("") to `com.project.enumeration.Category` value (but could if coercion was enabled using `CoercionConfig`)]
-17:45:50.694 [http-nio-8080-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot coerce empty String ("") to `com.project.enumeration.Category` value (but could if coercion was enabled using `CoercionConfig`)]
+00:22:11.317 [RMI TCP Connection(622)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:22:11.319 [RMI TCP Connection(622)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+00:22:11.320 [RMI TCP Connection(622)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+10:45:44.794 [restartedMain] INFO  com.project.BlockBlusterApplication - Starting BlockBlusterApplication using Java 17.0.7 with PID 1391 (/Users/a/Desktop/Progetto Finale - Corso Epicode/Parte-Backend/BlockBluster/target/classes started by a in /Users/a/Desktop/Progetto Finale - Corso Epicode/Parte-Backend/BlockBluster)
+10:45:44.795 [restartedMain] INFO  com.project.BlockBlusterApplication - No active profile set, falling back to 1 default profile: "default"
+10:45:44.851 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+10:45:44.851 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+10:45:45.643 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+10:45:45.728 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 5 JPA repository interfaces.
+10:45:46.498 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+10:45:46.519 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+10:45:46.520 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.10]
+10:45:46.600 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+10:45:46.600 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1749 ms
+10:45:46.768 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+10:45:46.858 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.5.Final
+10:45:46.862 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+10:45:47.037 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+10:45:47.222 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+10:45:47.240 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+10:45:47.536 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7ca88391
+10:45:47.538 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+10:45:47.932 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+10:45:48.894 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+10:45:49.117 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+10:45:49.757 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+10:45:50.087 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2edfb0d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7b4bf1af, org.springframework.security.web.context.SecurityContextHolderFilter@5614b63f, org.springframework.security.web.header.HeaderWriterFilter@b065bea, org.springframework.web.filter.CorsFilter@1f19a772, org.springframework.security.web.authentication.logout.LogoutFilter@3210bcb7, com.project.security.security.JwtAuthenticationFilter@5d16a404, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@352d9eb3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@750fe8ae, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3f4c7387, org.springframework.security.web.session.SessionManagementFilter@4bf72942, org.springframework.security.web.access.ExceptionTranslationFilter@18e15978, org.springframework.security.web.access.intercept.AuthorizationFilter@6df295ba]
+10:45:50.238 [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+10:45:50.370 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+10:45:50.404 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+10:45:50.414 [restartedMain] INFO  com.project.BlockBlusterApplication - Started BlockBlusterApplication in 6.045 seconds (process running for 11.766)
