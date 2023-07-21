@@ -19,14 +19,22 @@ function MyGames() {
   const [sortBy, setSortBy] = useState("");
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const gamesPerPage = 10;
 
   const addToCart = (game) => {
     setCart((prevCart) => [...prevCart, game]);
+    setShowAlert(true);
   };
 
   const removeFromCart = (game) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== game.id));
+  };
+
+  const removeAllFromCart = () => {
+    setCart([]);
   };
 
   const calculateCartTotal = () => {
@@ -34,9 +42,31 @@ function MyGames() {
     setCartTotal(total);
   };
 
+  const toggleCartModal = () => {
+    setIsSidebarOpen((prevState) => !prevState);
+  };
+
+  const handleCloseSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
   useEffect(() => {
     calculateCartTotal();
+    if (cart.length > 0) {
+      setIsSidebarOpen(true);
+    } else {
+      setIsSidebarOpen(false);
+    }
   }, [cart]);
+
+  useEffect(() => {
+    if (showAlert) {
+      const timer = setTimeout(() => {
+        setShowAlert(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [showAlert]);
 
   useEffect(() => {
     fetch("http://localhost:8080/api/auth/games", {
@@ -162,7 +192,14 @@ function MyGames() {
           </Form.Select>
         </div>
       </div>
-
+      {showAlert && (
+        <div
+          className={`alert-container alert-success alert-show`}
+          role="alert"
+        >
+          <p className="alert-message">Gioco aggiunto al carrello!</p>
+        </div>
+      )}
       <div className="d-flex flex-wrap justify-content-center mt-5">
         {currentGames.map((game) => (
           <Card className="card" key={game.id}>
@@ -199,7 +236,6 @@ function MyGames() {
           </Card>
         ))}
       </div>
-
       <div className="pagination">
         <ul className="pagination-list">
           {Array.from({
@@ -221,7 +257,17 @@ function MyGames() {
           ))}
         </ul>
       </div>
-      <Cart cart={cart} cartTotal={cartTotal} removeFromCart={removeFromCart} />
+      {isSidebarOpen && (
+        <div className={`sidebar ${isSidebarOpen ? "sidebar-open" : ""}`}>
+          <Cart
+            cart={cart}
+            cartTotal={cartTotal}
+            removeFromCart={removeFromCart}
+            removeAllFromCart={removeAllFromCart}
+            onCloseSidebar={handleCloseSidebar}
+          />
+        </div>
+      )}{" "}
     </div>
   );
 }

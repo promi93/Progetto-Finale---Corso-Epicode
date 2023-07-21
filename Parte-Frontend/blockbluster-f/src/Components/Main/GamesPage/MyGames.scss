@@ -147,3 +147,63 @@
   border: none !important;
   box-shadow: white !important;
 }
+
+.alert-container {
+  position: sticky;
+  top: 10%;
+  right: 10%;
+  left: 10%;
+  transform: translate(-10%, -10%, -10%);
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-inline: 40%;
+  padding: 16px;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.alert-message {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.alert-show {
+  opacity: 1;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+
+.sidebar {
+  width: 300px;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  height: 100%;
+  transition: right 0.3s ease-out;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.933);
+}
+.sidebar-open {
+  right: 0;
+}
+
+.cart-card {
+  background-color: rgba(255, 255, 255, 0.858);
+  margin-right: 80px;
+  margin-bottom: 30px;
+}
+
+.rental-cart {
+  font-size: 10px;
+}
