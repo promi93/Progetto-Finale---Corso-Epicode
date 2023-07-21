@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import { BsCart4, BsInfoCircleFill, BsThreeDotsVertical } from "react-icons/bs";
 import { SearchContext } from "./SearchProvider";
 import Dropdown from "react-bootstrap/Dropdown";
+import Cart from "../Carrello/Cart";
 
 function MyGames() {
   const { searchTitle } = useContext(SearchContext);
@@ -16,7 +17,26 @@ function MyGames() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortBy, setSortBy] = useState("");
+  const [cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState(0);
   const gamesPerPage = 10;
+
+  const addToCart = (game) => {
+    setCart((prevCart) => [...prevCart, game]);
+  };
+
+  const removeFromCart = (game) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== game.id));
+  };
+
+  const calculateCartTotal = () => {
+    const total = cart.reduce((acc, game) => acc + game.rentalPrice, 0);
+    setCartTotal(total);
+  };
+
+  useEffect(() => {
+    calculateCartTotal();
+  }, [cart]);
 
   useEffect(() => {
     fetch("http://localhost:8080/api/auth/games", {
@@ -163,7 +183,11 @@ function MyGames() {
                   Disponibilità: {game.isAvailable ? "Yes" : "No"}
                 </span>
               </Card.Text>
-              <Button className="nolo-btn" variant="transparent">
+              <Button
+                className="nolo-btn"
+                variant="transparent"
+                onClick={() => addToCart(game)}
+              >
                 <BsCart4 />
               </Button>
               <Link to={`/games/${game.id}`} className="card-link">
@@ -197,6 +221,7 @@ function MyGames() {
           ))}
         </ul>
       </div>
+      <Cart cart={cart} cartTotal={cartTotal} removeFromCart={removeFromCart} />
     </div>
   );
 }
