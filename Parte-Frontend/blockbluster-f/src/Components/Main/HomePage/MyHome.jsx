@@ -6,9 +6,10 @@ import logo from "../../../assets/image/logo.png";
 function MyHome() {
   return (
     <div className="home-container">
-      <div>
-        Benvenuti sulla piattaforma di BlockBluster dove potrete trovare tutti i
-        giochi da tavolo che amate di più...
+      <div className="text-cont">
+        <div className="text t1">
+          Benvenuti sulla piattaforma di BlockBluster
+        </div>
       </div>
       <div className="d-flex mt-5">
         <Image src={logo} className="mt-5" />
