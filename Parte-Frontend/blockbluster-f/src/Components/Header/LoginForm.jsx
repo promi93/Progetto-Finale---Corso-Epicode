@@ -22,7 +22,6 @@ const LoginForm = ({ onRegister }) => {
       if (response.ok) {
         const data = await response.json();
         console.log("Accesso effettuato con successo:", data);
-        // Salva l'utente registrato su localStorage
         localStorage.setItem("loggedInUser", JSON.stringify(data.user));
         setIsLoggedIn(true);
         alert("Accesso effettuato con successo");
@@ -41,10 +40,10 @@ const LoginForm = ({ onRegister }) => {
   };
 
   return (
-    <Form onSubmit={handleLogin}>
+    <Form onSubmit={handleLogin} className="t2 ">
       {error && <Alert variant="danger">{error}</Alert>}
       <Form.Group controlId="username">
-        <Form.Label>Username</Form.Label>
+        <Form.Label className="t1 text-dark fs-6">Username</Form.Label>
         <Form.Control
           type="text"
           placeholder="Username"
@@ -54,7 +53,7 @@ const LoginForm = ({ onRegister }) => {
       </Form.Group>
 
       <Form.Group controlId="password">
-        <Form.Label>Password</Form.Label>
+        <Form.Label className="t1 text-dark fs-6 mt-4">Password</Form.Label>
         <Form.Control
           type="password"
           placeholder="Password"
@@ -62,13 +61,23 @@ const LoginForm = ({ onRegister }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Accedi
-      </Button>
-      <Button variant="link" onClick={onRegister}>
-        Registrati
-      </Button>
+      <div className="mt-3 d-flex justify-content-between">
+        <Button
+          className="mt-3 t1 fs-5 text-light rounded rounded-5 shadow"
+          variant="primary"
+          type="submit"
+          onClick={handleLogin}
+        >
+          Accedi
+        </Button>
+        <Button
+          className="mt-3 t1 fs-5 text-light rounded rounded-5 shadow"
+          variant="success"
+          onClick={onRegister}
+        >
+          Registrati
+        </Button>
+      </div>
     </Form>
   );
 };

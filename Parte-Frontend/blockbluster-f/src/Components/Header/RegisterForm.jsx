@@ -54,9 +54,9 @@ const RegisterForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="t2">
       <Form.Group controlId="formBasicName">
-        <Form.Label>Name</Form.Label>
+        <Form.Label className="t1  text-dark fs-6">Name</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter name"
@@ -67,7 +67,7 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicLastname">
-        <Form.Label>Lastname</Form.Label>
+        <Form.Label className="mt-4 t1 text-dark fs-6">Surname</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter lastname"
@@ -78,7 +78,7 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicUsername">
-        <Form.Label>Username</Form.Label>
+        <Form.Label className="mt-4 t1 text-dark fs-6">Username</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter username"
@@ -89,7 +89,9 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label className="mt-4 t1 text-dark fs-6">
+          Email address
+        </Form.Label>
         <Form.Control
           type="email"
           placeholder="Enter email"
@@ -103,7 +105,7 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        <Form.Label className="mt-4 t1 text-dark fs-6">Password</Form.Label>
         <Form.Control
           type="password"
           placeholder="Password"
@@ -114,7 +116,7 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicCreditCard">
-        <Form.Label>Credit Card</Form.Label>
+        <Form.Label className="mt-4 t1 text-dark fs-6">Credit Card</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter credit card number"
@@ -125,7 +127,7 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicSecretCode">
-        <Form.Label>Secret Code</Form.Label>
+        <Form.Label className="mt-4 t1 text-dark fs-6">Secret Code</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter secret code"
@@ -136,7 +138,7 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicAlfaCode">
-        <Form.Label>Alfa Code</Form.Label>
+        <Form.Label className="mt-4 t1 text-dark fs-6">Alfa Code</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter alfa code"
@@ -146,7 +148,12 @@ const RegisterForm = () => {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button
+        className="mt-3 t1 fs-5 text-light rounded rounded-5 shadow"
+        variant="primary"
+        type="submit"
+        onClick={handleSubmit}
+      >
         Salva
       </Button>
     </Form>

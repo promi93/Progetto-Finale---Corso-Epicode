@@ -103,7 +103,7 @@ const MyNav = () => {
           </Form>
           <Modal show={showModal} onHide={closeModal}>
             <Modal.Header closeButton>
-              <Modal.Title>Login</Modal.Title>
+              <Modal.Title className="t1">Login</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <LoginForm onRegister={handleRegister} />
@@ -112,7 +112,7 @@ const MyNav = () => {
 
           <Modal show={registerModal} onHide={closeRegisterModal}>
             <Modal.Header closeButton>
-              <Modal.Title>Registration</Modal.Title>
+              <Modal.Title className="t1">Registrazione utente</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <RegisterForm />

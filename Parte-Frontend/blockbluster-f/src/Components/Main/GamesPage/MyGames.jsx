@@ -9,6 +9,18 @@ import { SearchContext } from "./SearchProvider";
 import Dropdown from "react-bootstrap/Dropdown";
 import Cart from "../Carrello/Cart";
 
+function TruncatedCardTitle({ title, maxLength }) {
+  if (title.length <= maxLength) {
+    return <Card.Title className="t1">{title}</Card.Title>;
+  } else {
+    return (
+      <Card.Title className="t1">
+        {title.slice(0, maxLength) + "..."}
+      </Card.Title>
+    );
+  }
+}
+
 function MyGames() {
   const { searchTitle } = useContext(SearchContext);
   const [games, setGames] = useState([]);
@@ -22,7 +34,7 @@ function MyGames() {
   const [showAlert, setShowAlert] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const gamesPerPage = 10;
+  const gamesPerPage = 12;
 
   const addToCart = (game) => {
     setCart((prevCart) => [...prevCart, game]);
@@ -38,7 +50,7 @@ function MyGames() {
   };
 
   const calculateCartTotal = () => {
-    const total = cart.reduce((acc, game) => (acc += game.rentalPrice), 0);
+    const total = cart.reduce((acc, game) => acc + game.rentalPrice, 0);
     setCartTotal(total);
   };
 
@@ -150,7 +162,7 @@ function MyGames() {
       </div>
     );
   }
-
+  const maxLength = 8;
   return (
     <div>
       <div className="d-flex justify-content-between">
@@ -200,10 +212,10 @@ function MyGames() {
         {currentGames.map((game) => (
           <Card className="card" key={game.id}>
             <Link to={`/games/${game.id}`} className="card-link">
-              <Card.Img src={game.image} style={{ height: "200px" }} />
+              <Card.Img src={game.image} style={{ height: "150px" }} />
             </Link>
             <Card.Body>
-              <Card.Title className="t1">{game.title}</Card.Title>
+              <TruncatedCardTitle title={game.title} maxLength={maxLength} />{" "}
               <Card.Text className="t2">
                 <span className="category">Categoria: {game.category}</span>
                 <span className="rental-price">

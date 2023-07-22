@@ -15,7 +15,7 @@ function Cart({
   return (
     <Container>
       <Row>
-        <div className="d-flex justify-content-between text-dark">
+        <div className="d-flex justify-content-between text-dark mt-4">
           <h2 className="t1">Carrello</h2>
           <div onClick={onCloseSidebar} className="close-btn">
             <BsXCircle style={{ cursor: "pointer" }} />

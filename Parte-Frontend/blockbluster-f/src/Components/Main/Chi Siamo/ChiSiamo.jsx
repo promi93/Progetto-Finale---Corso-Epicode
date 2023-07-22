@@ -11,6 +11,9 @@ function ChiSiamo() {
       <Row className="d-flex justify-content-center mt-2">
         <Image src={logo} className="logo" />
       </Row>
+      <Row className="d-flex justify-content-center t1 text-dark">
+        Chi siamo
+      </Row>
       <Container className="my-5 py-5 shadow rounded rounded-4">
         <Row>
           <Col xs={12} md={6}>
