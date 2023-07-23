@@ -35,7 +35,7 @@ function MyGames() {
   const [showAlert, setShowAlert] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const gamesPerPage = 12;
+  const gamesPerPage = 10;
 
   const addToCart = (game) => {
     setCart((prevCart) => [...prevCart, game]);
@@ -181,7 +181,7 @@ function MyGames() {
 
   const maxLength = 8;
   return (
-    <Container>
+    <Container fluid>
       <div className="d-flex justify-content-between">
         <Dropdown className="ms-4 mt-2">
           <Dropdown.Toggle variant="transparent" className="drop">
@@ -273,7 +273,7 @@ function MyGames() {
               }`}
             >
               <button
-                className="pagination-link"
+                className="pagination-link rounded rounded-4 m-2"
                 onClick={() => paginate(index + 1)}
               >
                 {index + 1}

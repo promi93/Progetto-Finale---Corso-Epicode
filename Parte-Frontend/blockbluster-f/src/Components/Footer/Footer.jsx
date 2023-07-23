@@ -8,19 +8,20 @@ function Footer() {
       <Container>
         <Row>
           <Col xs={12} sm={6} md={3} xl={2} xxl={2}>
-            <h5>About Us</h5>
+            <h5 className="t1 text-info fs-2">About Us</h5>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              gravida nunc sed ex eleifend, non mattis odio rutrum.
+              Esplora mondi, sfida amici e crea ricordi indelebili con la nostra
+              piattaforma di e-commerce di noleggio giochi da tavolo.
+              Divertimento illimitato a portata di clic.
             </p>
           </Col>
           <Col xs={12} sm={6} md={3}>
-            <h5>Contact Us</h5>
-            <p>Email: info@example.com</p>
+            <h5 className="t1 text-info fs-2">Contatti</h5>
+            <p>Email: info_blockgame@email.com</p>
             <p>Phone: +123 456 7890</p>
           </Col>
           <Col xs={12} sm={6} md={3}>
-            <h5>Follow Us</h5>
+            <h5 className="t1 text-info fs-2">Follow Us</h5>
             <div className="d-flex">
               <a href="https://www.facebook.com">
                 <FaFacebook size={24} className="me-2 text-light" />
@@ -37,7 +38,7 @@ function Footer() {
             </div>
           </Col>
           <Col xs={12} sm={6} md={3}>
-            <h5>Subscribe</h5>
+            <h5 className="t1 text-info fs-2">Subscribe</h5>
             <p>Subscribe to our newsletter to receive updates and offers.</p>
             <div>
               <input type="email" placeholder="Your email" />
