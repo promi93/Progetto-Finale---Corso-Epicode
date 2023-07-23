@@ -40,7 +40,7 @@ const LoginForm = ({ onRegister }) => {
   };
 
   return (
-    <Form onSubmit={handleLogin} className="t2 ">
+    <Form onSubmit={handleLogin} className="t2">
       {error && <Alert variant="danger">{error}</Alert>}
       <Form.Group controlId="username">
         <Form.Label className="t1 text-dark fs-6">Username</Form.Label>

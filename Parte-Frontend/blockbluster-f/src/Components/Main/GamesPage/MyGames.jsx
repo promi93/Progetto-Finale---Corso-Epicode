@@ -8,6 +8,7 @@ import { BsCart4, BsInfoCircleFill, BsThreeDotsVertical } from "react-icons/bs";
 import { SearchContext } from "./SearchProvider";
 import Dropdown from "react-bootstrap/Dropdown";
 import Cart from "../Carrello/Cart";
+import { Container } from "react-bootstrap";
 
 function TruncatedCardTitle({ title, maxLength }) {
   if (title.length <= maxLength) {
@@ -77,27 +78,42 @@ function MyGames() {
   }, [showAlert]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/auth/games", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
+    async function fetchData(url) {
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
           throw new Error("Errore durante il recupero dei giochi");
         }
-      })
-      .then((data) => {
-        setGames(data);
+
+        return response.json();
+      } catch (error) {
+        console.error("Errore durante il recupero dei giochi:", error);
+        throw error;
+      }
+    }
+
+    async function fetchGamesData() {
+      setLoading(true);
+      try {
+        const [gamesData, customGamesData] = await Promise.all([
+          fetchData("http://localhost:8080/api/auth/games"),
+          fetchData("http://localhost:8080/api/auth/customgames"),
+        ]);
+
+        setGames([...gamesData, ...customGamesData]);
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Errore durante il recupero dei giochi:", error);
         setLoading(false);
-      });
+      }
+    }
+    fetchGamesData();
   }, []);
 
   useEffect(() => {
@@ -162,12 +178,13 @@ function MyGames() {
       </div>
     );
   }
+
   const maxLength = 8;
   return (
-    <div>
+    <Container>
       <div className="d-flex justify-content-between">
         <Dropdown className="ms-4 mt-2">
-          <Dropdown.Toggle variant="trasparent" className="drop">
+          <Dropdown.Toggle variant="transparent" className="drop">
             <BsThreeDotsVertical />
           </Dropdown.Toggle>
           <Dropdown.Menu className="carica">
@@ -276,7 +293,7 @@ function MyGames() {
           />
         </div>
       )}{" "}
-    </div>
+    </Container>
   );
 }
 

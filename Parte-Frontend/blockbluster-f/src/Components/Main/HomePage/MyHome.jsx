@@ -1,26 +1,45 @@
 import { Link } from "react-router-dom";
-import { Button, Image } from "react-bootstrap";
+import { Button, Container, Image, Row, Col } from "react-bootstrap";
 import { FaGooglePlay } from "react-icons/fa";
 import logo from "../../../assets/image/logo.png";
 
 function MyHome() {
   return (
-    <div className="home-container">
-      <div className="text-cont">
-        <div className="text t1">
-          Benvenuti sulla piattaforma di BlockBluster
+    <Container fluid>
+      <Row>
+        <div className="home-container">
+          <section className="sec">
+            <h1 className="block t1">
+              <span className="sp">B</span>
+              <span className="sp">L</span>
+              <span className="sp">O</span>
+              <span className="sp">C</span>
+              <span className="sp">K</span>
+              <span className="sp">B</span>
+              <span className="sp">L</span>
+              <span className="sp">U</span>
+              <span className="sp">S</span>
+              <span className="sp">T</span>
+              <span className="sp">E</span>
+              <span className="sp">R</span>
+            </h1>
+          </section>
+          <div className="d-flex mt-5">
+            <Image src={logo} className="mt-5" />
+          </div>
+          <div className="special-effect" />
+          <Link to="/games">
+            <Button className="special-button" variant="transparent">
+              <FaGooglePlay />
+            </Button>
+          </Link>
+          <div className="click-text t2">
+            Scopri i nostri giochi
+            <span className="arrow">&nbsp; &#8594;</span>
+          </div>
         </div>
-      </div>
-      <div className="d-flex mt-5">
-        <Image src={logo} className="mt-5" />
-      </div>
-      <div className="special-effect" />
-      <Link to="/games">
-        <Button className="special-button" variant="transparent">
-          <FaGooglePlay />
-        </Button>
-      </Link>
-    </div>
+      </Row>
+    </Container>
   );
 }
 
