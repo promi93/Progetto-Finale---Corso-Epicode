@@ -4,6 +4,26 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 
+async function fetchData(url) {
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      return await response.json();
+    } else {
+      throw new Error("Error during game retrieval");
+    }
+  } catch (error) {
+    console.error("Error during game retrieval:", error);
+    return null;
+  }
+}
+
 function SingleCard() {
   const { id } = useParams();
   const [gameData, setGameData] = useState(null);
@@ -13,23 +33,22 @@ function SingleCard() {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/auth/games/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Errore durante il recupero del gioco");
-        }
-      })
-      .then((data) => setGameData(data))
-      .catch((error) =>
-        console.error("Errore durante il recupero del gioco:", error)
+    async function fetchGameData() {
+      const gameDataResponse = await fetchData(
+        `http://localhost:8080/api/auth/games/${id}`
       );
+
+      const customGameDataResponse = await fetchData(
+        `http://localhost:8080/api/auth/customgames/${id}`
+      );
+
+      // Choose the gameData response from either games or customgames
+      const data = customGameDataResponse || gameDataResponse;
+
+      setGameData(data);
+    }
+
+    fetchGameData();
   }, [id]);
 
   useEffect(() => {
