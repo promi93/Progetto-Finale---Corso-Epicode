@@ -25,6 +25,7 @@ const LoginForm = ({ onRegister }) => {
         localStorage.setItem("loggedInUser", JSON.stringify(data.user));
         setIsLoggedIn(true);
         alert("Accesso effettuato con successo");
+        window.location.replace("/home");
       } else if (response.status === 401) {
         setError("Utente non registrato");
       } else if (response.status === 400) {

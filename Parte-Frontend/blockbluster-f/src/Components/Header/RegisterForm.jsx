@@ -41,6 +41,7 @@ const RegisterForm = () => {
 
       if (response.ok) {
         alert("Registrazione avvenuta con successo");
+        window.location.replace("/home");
       } else if (response.status === 400) {
         throw new Error("L'utente è già registrato");
       } else {
@@ -104,7 +105,9 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicCreditCard">
-        <Form.Label className="mt-4 t1 text-dark fs-6">Credit Card</Form.Label>
+        <Form.Label className="mt-4 t1 text-dark fs-6">
+          Carta di credito
+        </Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter credit card number"
@@ -115,7 +118,7 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicSecretCode">
-        <Form.Label className="mt-4 t1 text-dark fs-6">Secret Code</Form.Label>
+        <Form.Label className="mt-4 t1 text-dark fs-6">Codice Auth</Form.Label>
         <Form.Control
           type="password"
           placeholder="Enter secret code"

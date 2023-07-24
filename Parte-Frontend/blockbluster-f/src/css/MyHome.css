@@ -8,6 +8,14 @@
   align-items: center;
 }
 
+.home-container2 {
+  background-image: url("/src/assets/image/pic1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
 .sec {
   height: 100vh;
   background-color: #000;

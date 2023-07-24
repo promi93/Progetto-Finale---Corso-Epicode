@@ -4,7 +4,12 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 import Form from "react-bootstrap/Form";
-import { BsCart4, BsInfoCircleFill, BsThreeDotsVertical } from "react-icons/bs";
+import {
+  BsCart4,
+  BsInfoCircleFill,
+  BsThreeDotsVertical,
+  BsFilter,
+} from "react-icons/bs";
 import { SearchContext } from "./SearchProvider";
 import Dropdown from "react-bootstrap/Dropdown";
 import Cart from "../Carrello/Cart";
@@ -193,11 +198,12 @@ function MyGames() {
         </Dropdown>
         <div className="filters">
           <Form.Select
-            className="category-filter filtri"
+            className="category-filter filtri t2"
             value={selectedCategory}
             onChange={handleCategoryChange}
           >
             <option value="">Tutte le categorie</option>
+
             {categories.map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -205,7 +211,7 @@ function MyGames() {
             ))}
           </Form.Select>
           <Form.Select
-            className="sort-filter filtri"
+            className="sort-filter filtri t2"
             value={sortBy}
             onChange={handleSortChange}
           >
