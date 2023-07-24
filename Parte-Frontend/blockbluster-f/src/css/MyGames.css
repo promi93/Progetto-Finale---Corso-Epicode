@@ -207,4 +207,11 @@
 
 .rental-cart {
   font-size: 10px;
+}
+
+.CardElement {
+  position: relative;
+  padding: 10px;
+  background-color: #eeeeee;
+  border-radius: 12px;
 }/*# sourceMappingURL=MyGames.css.map */

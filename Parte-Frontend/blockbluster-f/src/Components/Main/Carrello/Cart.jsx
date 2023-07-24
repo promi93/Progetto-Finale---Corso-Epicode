@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { BsXCircle } from "react-icons/bs";
 import { MdDeleteForever } from "react-icons/md";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import axios from "axios";
 
 function Cart({
   cart,
@@ -12,6 +14,50 @@ function Cart({
   removeAllFromCart,
   onCloseSidebar,
 }) {
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const handlePayment = async () => {
+    if (!stripe || !elements) {
+      console.log("Stripe non è ancora pronto. Riprova più tardi.");
+      return;
+    }
+
+    const cardElement = elements.getElement(CardElement);
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: cardElement,
+    });
+
+    if (error) {
+      console.log(
+        "Errore durante la creazione della PaymentMethod:",
+        error.message
+      );
+    } else {
+      console.log("PaymentMethod creato con successo:", paymentMethod);
+
+      // Invia l'ID della PaymentMethod al server
+      try {
+        const response = await axios.post(
+          "http:localhost:8080/api/auth/rental",
+          {
+            paymentMethodId: paymentMethod.id,
+            cartTotal: cartTotal, // Includi il totale del carrello se necessario
+          }
+        );
+
+        console.log("Risposta dal server:", response.data);
+        // Gestisci la risposta del server qui, ad esempio, mostrando un messaggio di conferma
+      } catch (error) {
+        console.error(
+          "Errore durante l'invio della PaymentMethod al server:",
+          error
+        );
+      }
+    }
+  };
+
   return (
     <Container>
       <Row>
@@ -51,11 +97,31 @@ function Cart({
           )}
           <Col>
             <p className="t2 ">Totale: {cartTotal}€</p>
-            <Button className="rounded rounded-5 shadow t2" variant="warning">
+            <CardElement
+              className="CardElement"
+              options={{
+                style: {
+                  base: {
+                    fontSize: "16px",
+                    color: "#424770",
+                    "::placeholder": {
+                      color: "#aab7c4",
+                    },
+                  },
+                  invalid: {
+                    color: "#9e2146",
+                  },
+                },
+              }}
+            />
+            <Button
+              className="rounded rounded-5 shadow t2 bg-warning mt-3"
+              onClick={handlePayment}
+            >
               Checkout
             </Button>
             <Button
-              className="ms-4 rounded rounded-5 shadow t2"
+              className="ms-4 rounded rounded-5 shadow t2 mt-3"
               variant="danger"
               onClick={() => removeAllFromCart()}
             >

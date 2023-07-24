@@ -14,6 +14,8 @@ import { SearchContext } from "./SearchProvider";
 import Dropdown from "react-bootstrap/Dropdown";
 import Cart from "../Carrello/Cart";
 import { Container } from "react-bootstrap";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 function TruncatedCardTitle({ title, maxLength }) {
   if (title.length <= maxLength) {
@@ -39,6 +41,7 @@ function MyGames() {
   const [cartTotal, setCartTotal] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const stripePromise = loadStripe("TU_CHIAVE_PUBBLICA_STRIPE");
 
   const gamesPerPage = 10;
 
@@ -290,13 +293,15 @@ function MyGames() {
       </div>
       {isSidebarOpen && (
         <div className={`sidebar ${isSidebarOpen ? "sidebar-open" : ""}`}>
-          <Cart
-            cart={cart}
-            cartTotal={cartTotal}
-            removeFromCart={removeFromCart}
-            removeAllFromCart={removeAllFromCart}
-            onCloseSidebar={handleCloseSidebar}
-          />
+          <Elements stripe={stripePromise}>
+            <Cart
+              cart={cart}
+              cartTotal={cartTotal}
+              removeFromCart={removeFromCart}
+              removeAllFromCart={removeAllFromCart}
+              onCloseSidebar={handleCloseSidebar}
+            />
+          </Elements>
         </div>
       )}{" "}
     </Container>
