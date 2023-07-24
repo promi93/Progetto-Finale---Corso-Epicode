@@ -9,34 +9,31 @@ function MyHome() {
       <Row>
         <div className="home-container">
           <section className="sec">
-            <h1 className="block t1">
+            <h1 className="block">
               <span className="sp">B</span>
-              <span className="sp">L</span>
               <span className="sp">O</span>
-              <span className="sp">C</span>
-              <span className="sp">K</span>
-              <span className="sp">B</span>
-              <span className="sp">L</span>
-              <span className="sp">U</span>
-              <span className="sp">S</span>
-              <span className="sp">T</span>
-              <span className="sp">E</span>
+              <span className="sp">A</span>
               <span className="sp">R</span>
+              <span className="sp">D</span>
+              <span className="sp">I</span>
+              <span className="sp">N</span>
+              <span className="sp">G</span>
+              <span className="sp">P</span>
+              <span className="sp">L</span>
+              <span className="sp">A</span>
+              <span className="sp">Y</span>
             </h1>
           </section>
-          <div className="d-flex mt-5">
-            <Image src={logo} className="mt-5" />
-          </div>
-          <div className="special-effect" />
-          <Link to="/games">
-            <Button className="special-button" variant="transparent">
-              <FaGooglePlay />
-            </Button>
-          </Link>
-          <div className="click-text t2">
-            Scopri i nostri giochi
-            <span className="arrow">&nbsp; &#8594;</span>
-          </div>
+          <Image src={logo} style={{ width: "10em" }} />
+          <section className="mt-5">
+            <div className="special-effect" />
+            <Link to="/games">
+              <Button className="special-button" variant="transparent">
+                <FaGooglePlay />
+              </Button>
+            </Link>
+            <div className="t2 text-light">Scopri i nostri giochi</div>
+          </section>
         </div>
       </Row>
     </Container>

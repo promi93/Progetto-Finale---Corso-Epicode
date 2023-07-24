@@ -9,7 +9,7 @@ function ChiSiamo() {
   return (
     <div className="chi">
       <Row className="d-flex justify-content-center mt-2">
-        <Image src={logo} className="logo" />
+        <Image src={logo} className="logo my-4" />
       </Row>
       <Row className="d-flex justify-content-center t1 text-dark">
         Chi siamo
@@ -26,9 +26,9 @@ function ChiSiamo() {
             />
           </Col>
           <Col xs={12} md={6}>
-            <h1 className="t1">Benvenuti a BlockBluster</h1>
+            <h1 className="t1">Benvenuti a BoardingPlay</h1>
             <p className="t2">
-              Benvenuti su BlockBluster, la piattaforma online specializzata nel
+              Benvenuti su BoardingPlay, la piattaforma online specializzata nel
               noleggio di giochi da tavolo di alta qualità. Siamo un'azienda di
               e-commerce che offre un servizio conveniente e accessibile per
               noleggiare giochi da tavolo e goderne comodamente a casa tua.

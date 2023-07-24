@@ -87,8 +87,8 @@ const MyNav = () => {
                 aria-label="Search"
                 id="outlineBtn"
                 ref={inputRef}
-                value={searchTitle} // Assegna il valore di searchTitle all'input
-                onChange={(e) => setSearchTitle(e.target.value)} // Aggiorna searchTitle quando l'utente digita
+                value={searchTitle}
+                onChange={(e) => setSearchTitle(e.target.value)}
               />
             )}{" "}
             <Button
@@ -97,9 +97,9 @@ const MyNav = () => {
               onClick={handleSearchToggle}
               ref={searchBtnRef}
             >
-              <BsSearch />
+              <BsSearch className="fs-5" />
             </Button>
-            <FaUser className="user shadow" onClick={openModal} />
+            <FaUser className="user fs-5" onClick={openModal} />
           </Form>
           <Modal show={showModal} onHide={closeModal}>
             <Modal.Header closeButton className="log">

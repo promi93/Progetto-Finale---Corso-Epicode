@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap");
 .home-container {
   background-image: url("/src/assets/image/pic1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -57,10 +58,11 @@
 }
 
 .block .sp:nth-child(12) {
-  animation-delay: 6s;
+  animation-delay: 5.75s;
 }
 
 .block {
+  font-family: "Bungee Spice", cursive;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -69,8 +71,9 @@
   text-align: center;
   color: #ddd;
   font-size: 5em !important;
-  letter-spacing: 0.2em;
-  opacity: 0.4;
+  letter-spacing: 0.3em;
+  text-shadow: 3px 3px 8px black;
+  opacity: 0.8;
 }
 
 .block .sp {
@@ -92,6 +95,7 @@
   }
 }
 .special-button {
+  margin-bottom: 30px;
   font-family: "Alfa Slab One", cursive;
   font-size: 24px;
   padding: 20px 60px;
@@ -113,10 +117,9 @@
 }
 
 .click-text {
-  position: absolute;
-  bottom: 41%;
-  left: 81%;
-  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
   font-size: 16px;
   color: #fff;
 }/*# sourceMappingURL=MyHome.css.map */
