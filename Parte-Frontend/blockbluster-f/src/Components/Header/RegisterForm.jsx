@@ -55,23 +55,12 @@ const RegisterForm = () => {
   return (
     <Form onSubmit={handleSubmit} className="t2">
       <Form.Group controlId="formBasicName">
-        <Form.Label className="t1  text-dark fs-6">Name</Form.Label>
+        <Form.Label className="t1  text-dark fs-6">Nome e Cognome</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Enter name"
+          placeholder="Enter name and surname"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group controlId="formBasicLastname">
-        <Form.Label className="mt-4 t1 text-dark fs-6">Surname</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter lastname"
-          value={lastname}
-          onChange={(e) => setLastname(e.target.value)}
           required
         />
       </Form.Group>
@@ -128,7 +117,7 @@ const RegisterForm = () => {
       <Form.Group controlId="formBasicSecretCode">
         <Form.Label className="mt-4 t1 text-dark fs-6">Secret Code</Form.Label>
         <Form.Control
-          type="text"
+          type="password"
           placeholder="Enter secret code"
           value={secretCode}
           onChange={(e) => setSecretCode(e.target.value)}
@@ -137,7 +126,7 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicAlfaCode">
-        <Form.Label className="mt-4 t1 text-dark fs-6">Alfa Code</Form.Label>
+        <Form.Label className="mt-4 t1 text-dark fs-6">CVV</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter alfa code"
