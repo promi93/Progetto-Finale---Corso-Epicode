@@ -157,7 +157,7 @@ function MyGames() {
   ];
 
   const sortOptions = [
-    { value: "", label: "Nessun ordinamento" },
+    { value: "", label: "Ordine alfabetico " },
     { value: "asc", label: "A-Z" },
     { value: "desc", label: "Z-A" },
   ];

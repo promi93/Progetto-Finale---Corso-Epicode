@@ -20,10 +20,6 @@ const RegisterForm = () => {
       username,
       email,
       password,
-      creditCard,
-      secretCode,
-      alfaCode,
-      roles: [],
     };
 
     handleRegister(userData);
@@ -100,41 +96,6 @@ const RegisterForm = () => {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group controlId="formBasicCreditCard">
-        <Form.Label className="mt-4 t1 text-dark fs-6">
-          Carta di credito
-        </Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter credit card number"
-          value={creditCard}
-          onChange={(e) => setCreditCard(e.target.value)}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group controlId="formBasicSecretCode">
-        <Form.Label className="mt-4 t1 text-dark fs-6">Codice Auth</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Enter secret code"
-          value={secretCode}
-          onChange={(e) => setSecretCode(e.target.value)}
-          required
-        />
-      </Form.Group>
-
-      <Form.Group controlId="formBasicAlfaCode">
-        <Form.Label className="mt-4 t1 text-dark fs-6">CVV</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter alfa code"
-          value={alfaCode}
-          onChange={(e) => setAlfaCode(e.target.value)}
           required
         />
       </Form.Group>

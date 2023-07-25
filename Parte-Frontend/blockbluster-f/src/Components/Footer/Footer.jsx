@@ -1,6 +1,13 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { FaFacebook, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+  FaTiktok,
+  FaLinkedin,
+  FaGithub,
+} from "react-icons/fa";
 
 function Footer() {
   return (
@@ -23,17 +30,17 @@ function Footer() {
           <Col xs={12} sm={6} md={3}>
             <h5 className="t1 text-info fs-2">Follow Us</h5>
             <div className="d-flex">
-              <a href="https://www.facebook.com">
+              <a href="https://www.facebook.com" target="_blank">
                 <FaFacebook size={24} className="me-2 text-light" />
               </a>
-              <a href="https://www.instagram.com">
+              <a href="https://www.instagram.com" target="_blank">
                 <FaInstagram size={24} className="me-2 text-light" />
               </a>
-              <a href="https://www.twitter.com">
-                <FaTwitter size={24} className="me-2 text-light" />
+              <a href="https://github.com/promi93" target="_blank">
+                <FaGithub size={24} className="me-2 text-light" />
               </a>
-              <a href="https://www.tiktok.com">
-                <FaTiktok size={24} className="me-2 text-light" />
+              <a href="https://www.linkedin.com/in/promi-abu/" target="_blank">
+                <FaLinkedin size={24} className="me-2 text-light" />
               </a>
             </div>
           </Col>

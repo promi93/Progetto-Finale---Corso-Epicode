@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { Button, Container, Image, Row } from "react-bootstrap";
 import { FaGooglePlay } from "react-icons/fa";
 import logo from "../../../assets/image/logo.png";
+import MyHome2 from "./MyHome2";
 
 function MyHome() {
   return (
     <Container fluid>
-      {(localStorage.getItem("loggedInUser") !== null &&
+      {((localStorage.getItem("loggedInUser") !== null &&
         localStorage.getItem("loggedInUser") !== "null") === true && (
         <Row>
           <div className="home-container">
@@ -38,7 +39,7 @@ function MyHome() {
             </section>
           </div>
         </Row>
-      )}
+      )) || <MyHome2 />}
     </Container>
   );
 }
