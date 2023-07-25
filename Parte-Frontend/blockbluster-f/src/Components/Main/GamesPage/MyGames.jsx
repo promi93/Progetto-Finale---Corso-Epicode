@@ -41,8 +41,9 @@ function MyGames() {
   const [cartTotal, setCartTotal] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const stripePromise = loadStripe("TU_CHIAVE_PUBBLICA_STRIPE");
-
+  const stripePromise = loadStripe(
+    "pk_test_51NXivoAsqZJKDxuycP8NsQWyim3EOASxTL566WwFzQ0yAJjHgVyy3WKkE8VJ5pHgBsJSP0FrdmPcspjLy0lKkDFT00jPfLGJ21"
+  );
   const gamesPerPage = 10;
 
   const addToCart = (game) => {
@@ -296,7 +297,7 @@ function MyGames() {
           <Elements stripe={stripePromise}>
             <Cart
               cart={cart}
-              cartTotal={cartTotal}
+              cartTotal2={cartTotal}
               removeFromCart={removeFromCart}
               removeAllFromCart={removeAllFromCart}
               onCloseSidebar={handleCloseSidebar}

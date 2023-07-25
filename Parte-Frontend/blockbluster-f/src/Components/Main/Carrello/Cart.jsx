@@ -9,7 +9,7 @@ import axios from "axios";
 
 function Cart({
   cart,
-  cartTotal,
+  cartTotal2,
   removeFromCart,
   removeAllFromCart,
   onCloseSidebar,
@@ -40,12 +40,16 @@ function Cart({
       // Invia l'ID della PaymentMethod al server
       try {
         const response = await axios.post(
-          "http:localhost:8080/api/auth/rental",
+          "http://localhost:8080/api/auth/payment",
           {
             paymentMethodId: paymentMethod.id,
-            cartTotal: cartTotal, // Includi il totale del carrello se necessario
+            cartTotal: cartTotal2, // Includi il totale del carrello se necessario
           }
         );
+
+        if (response.status === 200) {
+          console.log("pagamento effettuato con successo!");
+        }
 
         console.log("Risposta dal server:", response.data);
         // Gestisci la risposta del server qui, ad esempio, mostrando un messaggio di conferma
@@ -96,24 +100,8 @@ function Cart({
             </div>
           )}
           <Col>
-            <p className="t2 ">Totale: {cartTotal}€</p>
-            <CardElement
-              className="CardElement"
-              options={{
-                style: {
-                  base: {
-                    fontSize: "16px",
-                    color: "#424770",
-                    "::placeholder": {
-                      color: "#aab7c4",
-                    },
-                  },
-                  invalid: {
-                    color: "#9e2146",
-                  },
-                },
-              }}
-            />
+            <p className="t2 ">Totale: {cartTotal2}€</p>
+            <CardElement className="CardElement" />
             <Button
               className="rounded rounded-5 shadow t2 bg-warning mt-3"
               onClick={handlePayment}

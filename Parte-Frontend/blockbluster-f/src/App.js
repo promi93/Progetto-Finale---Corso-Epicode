@@ -16,7 +16,6 @@ import ChiSiamo from "./Components/Main/Chi Siamo/ChiSiamo";
 import Footer from "./Components/Footer/Footer";
 import { SearchProvider } from "./Components/Main/GamesPage/SearchProvider";
 import MyCustomGames from "./Components/Main/GamesPage/MyCustomGames";
-import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   return (

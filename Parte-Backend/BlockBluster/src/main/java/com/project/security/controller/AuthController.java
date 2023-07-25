@@ -31,10 +31,7 @@ public class AuthController {
     // Build Login REST API
     @PostMapping(value = {"/login", "/signin"})
     public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {
-        // Verifica se l'utente è già autenticato
-        if (authenticatedUsers.contains(loginDto.getUsername())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("L'utente è già autenticato.");
-        }
+        
 
         String token = authService.login(loginDto);
 
@@ -47,20 +44,6 @@ public class AuthController {
         return ResponseEntity.ok(jwtAuthResponse);
     }
 
- // Build Logout REST API
-    @PostMapping("/logout")
-    public ResponseEntity<String> logout(@RequestBody String username) {
-        // Verifica se l'utente è autenticato
-        if (!authenticatedUsers.contains(username)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("L'utente non è autenticato.");
-        }
-
-        // Rimuovi l'utente dall'elenco degli utenti autenticati
-        authenticatedUsers.remove(username);
-        // Esegui altre operazioni di logout, se necessario
-
-        return ResponseEntity.ok("Logout effettuato con successo.");
-    }
 
 
     // Build Register REST API

@@ -22,14 +22,12 @@ const LoginForm = ({ onRegister }) => {
       if (response.ok) {
         const data = await response.json();
         console.log("Accesso effettuato con successo:", data);
-        localStorage.setItem("loggedInUser", JSON.stringify(data.user));
+        localStorage.setItem("loggedInUser", data.username);
         setIsLoggedIn(true);
         alert("Accesso effettuato con successo");
         window.location.replace("/home");
       } else if (response.status === 401) {
         setError("Utente non registrato");
-      } else if (response.status === 400) {
-        setError("Utente già connesso");
       } else {
         const errorData = await response.json();
         setError("Errore durante l'accesso: " + errorData.message);

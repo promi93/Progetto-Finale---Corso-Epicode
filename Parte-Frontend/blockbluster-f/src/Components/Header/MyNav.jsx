@@ -99,7 +99,21 @@ const MyNav = () => {
             >
               <BsSearch className="fs-5" />
             </Button>
-            <FaUser className="user fs-5" onClick={openModal} />
+            {(localStorage.getItem("loggedInUser") === null ||
+              localStorage.getItem("loggedInUser") === "null") === true && (
+              <FaUser className="user fs-5" onClick={openModal} />
+            )}
+            {(localStorage.getItem("loggedInUser") !== null &&
+              localStorage.getItem("loggedInUser") !== "null") === true && (
+              <Nav.Link
+                onClick={() => {
+                  localStorage.setItem("loggedInUser", null);
+                }}
+                href="/home"
+              >
+                Logout
+              </Nav.Link>
+            )}
           </Form>
           <Modal show={showModal} onHide={closeModal}>
             <Modal.Header closeButton className="log">
