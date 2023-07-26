@@ -42,7 +42,7 @@ const LoginForm = ({ onRegister }) => {
     <Form onSubmit={handleLogin} className="t2">
       {error && <Alert variant="danger">{error}</Alert>}
       <Form.Group controlId="username">
-        <Form.Label className="t1 text-dark fs-6">Username</Form.Label>
+        <Form.Label className="t1 fs-6">Username</Form.Label>
         <Form.Control
           type="text"
           placeholder="Username"
@@ -52,7 +52,7 @@ const LoginForm = ({ onRegister }) => {
       </Form.Group>
 
       <Form.Group controlId="password">
-        <Form.Label className="t1 text-dark fs-6 mt-4">Password</Form.Label>
+        <Form.Label className="t1 fs-6 mt-4">Password</Form.Label>
         <Form.Control
           type="password"
           placeholder="Password"

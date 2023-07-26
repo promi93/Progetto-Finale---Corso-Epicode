@@ -116,19 +116,17 @@ const MyNav = () => {
             )}
           </Form>
           <Modal show={showModal} onHide={closeModal}>
-            <Modal.Header closeButton className="log">
-              <Modal.Title className="t1">Login</Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="log">
+            <Modal.Body closeButton className="log">
+              <Modal.Title className="t1 text-warning">Login</Modal.Title>
               <LoginForm onRegister={handleRegister} />
             </Modal.Body>
           </Modal>
 
           <Modal show={registerModal} onHide={closeRegisterModal}>
-            <Modal.Header closeButton className="log">
-              <Modal.Title className="t1">Registrazione utente</Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="log">
+            <Modal.Body closeButton className="log">
+              <Modal.Title className="t1 text-warning">
+                Registrazione utente
+              </Modal.Title>
               <RegisterForm />
             </Modal.Body>
           </Modal>

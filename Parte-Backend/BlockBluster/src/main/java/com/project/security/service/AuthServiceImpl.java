@@ -82,9 +82,7 @@ public class AuthServiceImpl implements AuthService {
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
         user.setActive(false);
         user.setDate(LocalDateTime.now());
-        user.setCreditCard(registerDto.getCreditCard());
-        user.setSecretCode(registerDto.getSecretCode());
-        user.setAlfaCode(registerDto.getAlfaCode());
+
 
         Set<Role> roles = new HashSet<>();
         

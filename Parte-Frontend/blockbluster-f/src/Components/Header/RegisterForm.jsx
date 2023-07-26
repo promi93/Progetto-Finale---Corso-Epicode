@@ -52,7 +52,7 @@ const RegisterForm = () => {
   return (
     <Form onSubmit={handleSubmit} className="t2">
       <Form.Group controlId="formBasicName">
-        <Form.Label className="t1  text-dark fs-6">Nome e Cognome</Form.Label>
+        <Form.Label className="t1  fs-6">Nome e Cognome</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter name and surname"
@@ -63,7 +63,7 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicUsername">
-        <Form.Label className="mt-4 t1 text-dark fs-6">Username</Form.Label>
+        <Form.Label className="mt-4 t1 fs-6">Username</Form.Label>
         <Form.Control
           type="text"
           placeholder="Enter username"
@@ -74,9 +74,7 @@ const RegisterForm = () => {
       </Form.Group>
 
       <Form.Group controlId="formBasicEmail">
-        <Form.Label className="mt-4 t1 text-dark fs-6">
-          Email address
-        </Form.Label>
+        <Form.Label className="mt-4 t1 fs-6">Email address</Form.Label>
         <Form.Control
           type="email"
           placeholder="Enter email"
@@ -84,13 +82,13 @@ const RegisterForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <Form.Text className="text-muted">
+        <Form.Text className="text-light">
           We'll never share your email with anyone else.
         </Form.Text>
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword">
-        <Form.Label className="mt-4 t1 text-dark fs-6">Password</Form.Label>
+        <Form.Label className="mt-4 t1 fs-6">Password</Form.Label>
         <Form.Control
           type="password"
           placeholder="Password"
