@@ -48,6 +48,8 @@ function MyCustomGames() {
       );
       if (response.ok) {
         console.log("Gioco personalizzato inviato con successo al backend");
+        alert("Gioco aggiunto con successo!");
+        window.location.replace("/games");
       } else if (response.status === 500) {
         console.log("Gioco già presente!");
       } else {
