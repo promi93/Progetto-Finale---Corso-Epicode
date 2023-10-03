@@ -15,7 +15,7 @@ function Cart({
   removeAllFromCart,
   onCloseSidebar,
 }) {
-  const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false); // Aggiunto stato per il pagamento
+  const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false); // stato del pagamento
 
   const stripe = useStripe();
   const elements = useElements();
@@ -52,7 +52,7 @@ function Cart({
         if (response.status === 200) {
           console.log("pagamento effettuato con successo!");
           alert("Pagamento effettuato con successo!");
-          setIsPaymentSuccessful(true); // Imposta lo stato a true se il pagamento va a buon fine
+          setIsPaymentSuccessful(true); // true se il pagamento va a buon fine!
         }
 
         console.log("Risposta dal server:", response.data);
